@@ -47,6 +47,8 @@
 \define@key[Dnd]{Category}{Ideals}{\def\dnd@Category@Ideals{#1}}
 \define@key[Dnd]{Category}{Bonds}{\def\dnd@Category@Bonds{#1}}
 \define@key[Dnd]{Category}{Flaws}{\def\dnd@Category@Flaws{#1}}
+\define@key[Dnd]{Category}{Features}{\def\dnd@Category@Features{#1}}
+\define@key[Dnd]{Category}{Notes}{\def\dnd@Category@Notes{#1}}
 
 \define@key[Dnd]{Character}{Name}{\def\dnd@Character@Name{#1}}
 \define@key[Dnd]{Character}{Class}{\def\dnd@Character@Class{#1}}
@@ -154,7 +156,8 @@
 		Character={},Ability={},Inspiration={},Proficiency={},
 		Skill={},Perception={},Proficiencies={},Armor={},Initiative=0,
 		Speed={},Hitpoints={},Hitdices={},Weapons={},Money={},
-		Equipment={},Traits={},Ideals={},Bonds={},Flaws={},#1}
+		Equipment={},Traits={},Ideals={},Bonds={},Flaws={},
+		Features={},Notes={},#1}
 
 	\includepdf[pages=1, pagecommand={\ifthispageodd{
 		\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
@@ -631,17 +634,7 @@
 		%
 		\node[draw=none,rectangle,text width=5.8 cm,align=left] at (12.7,-16.8) {%
 			\setstretch{0.975}\small
-			\parbox[][12.7 cm][t]{5.8 cm}{
-				War Caster \\
-				Agonizing Blast \\
-				Devils Sight \\
-				Repelling Blast \\
-				Ghostly Gaze \\
-				\\
-				Pact of the Tome \\
-				Fiend Patron \\
-				Dark One's Blessing
-			}
+			\parbox[][12.7 cm][t]{5.8 cm}{\dnd@Category@Features}
 		};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -664,36 +657,7 @@
 					width=\dimexpr\textwidth\relax,
 					arc=0pt,outer arc=0pt,
 				}
-				\begin{tcolorbox}
-				War Caster:
-				\begin{itemize}%
-					\item You have advantage on Constitution saving throws to maintain your concentration on a spell when you take damage.
-					\item  You can perform the somatic components of spells even when you have equpied weapons or a shield.
-					\item Cast a spell (1 action, target is creature) instead of a oppertunity attack
-				\end{itemize}
-				%
-				Agonizing Blast: Eldritch Blast +CHA DMG Bonus \\%
-				\\%
-				Repelling Blast: Eldrith blast pushes the target up to 10 feet further away from you \\
-				\\
-				Devil’s Sight: You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet. \\
-				\\
-				Ghostly Gaze: Look through a solid object (up to 30 foot) once every short/long rest
-				\\
-				Pact of the Tome: Book of Shadows (Spellbook) \\
-				\\
-				Fiend Patron: Expanded Spell list \\
-				Dark One's Blessing: CHA-Mod + Lvl temp. HP when reducing a hostile creature to 0 HP \\
-				\\
-				Dark One's Own Luck: add d10 to an ability check or saving throw once every short rest \\
-				\\
-				Bandages: restore d10 hp during short rest \\
-				\\
-				Im Wirtshaus von Gob heiße ich Taron, Thentam bei den Kultisten \\
-				\\
-				Dragongleam (Spear): "Tiamat’s Eyes Shine" is engraved on Shaft \\
-				Wand of Winter (7 uses, recharging): Ray of Frost (costs 1), Sleetstorm (costs 3, Icestorm (costs 4) Current Uses: 0
-				\end{tcolorbox}
+				\begin{tcolorbox}\dnd@Category@Notes\end{tcolorbox}
 			}
 		};
 		%
@@ -783,6 +747,47 @@
 			Studded leather armor \\
 			Box with 2 bandages \\
 			Wand of Winter
+		},
+		Features={
+			War Caster \\
+			Agonizing Blast \\
+			Devils Sight \\
+			Repelling Blast \\
+			Ghostly Gaze \\
+			\\
+			Pact of the Tome \\
+			Fiend Patron \\
+			Dark One's Blessing
+		},
+		Notes={
+			War Caster:
+			\begin{itemize}%
+				\item You have advantage on Constitution saving throws to maintain your concentration on a spell when you take damage.
+				\item  You can perform the somatic components of spells even when you have equpied weapons or a shield.
+				\item Cast a spell (1 action, target is creature) instead of a oppertunity attack
+			\end{itemize}
+			%
+			Agonizing Blast: Eldritch Blast +CHA DMG Bonus \\%
+			\\%
+			Repelling Blast: Eldrith blast pushes the target up to 10 feet further away from you \\
+			\\
+			Devil’s Sight: You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet. \\
+			\\
+			Ghostly Gaze: Look through a solid object (up to 30 foot) once every short/long rest
+			\\
+			Pact of the Tome: Book of Shadows (Spellbook) \\
+			\\
+			Fiend Patron: Expanded Spell list \\
+			Dark One's Blessing: CHA-Mod + Lvl temp. HP when reducing a hostile creature to 0 HP \\
+			\\
+			Dark One's Own Luck: add d10 to an ability check or saving throw once every short rest \\
+			\\
+			Bandages: restore d10 hp during short rest \\
+			\\
+			Im Wirtshaus von Gob heiße ich Taron, Thentam bei den Kultisten \\
+			\\
+			Dragongleam (Spear): "Tiamat’s Eyes Shine" is engraved on Shaft \\
+			Wand of Winter (7 uses, recharging): Ray of Frost (costs 1), Sleetstorm (costs 3, Icestorm (costs 4) Current Uses: 0
 		}
 	}
 
