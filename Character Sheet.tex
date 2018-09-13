@@ -43,6 +43,10 @@
 \define@key[Dnd]{Category}{Money}{\setkeys[Dnd]{Money}{
 	Copper=0,Silver=0,Electrum=0,Gold=0,Platin=0,#1}}
 \define@key[Dnd]{Category}{Equipment}{\def\dnd@Category@Equipment{#1}}
+\define@key[Dnd]{Category}{Traits}{\def\dnd@Category@Traits{#1}}
+\define@key[Dnd]{Category}{Ideals}{\def\dnd@Category@Ideals{#1}}
+\define@key[Dnd]{Category}{Bonds}{\def\dnd@Category@Bonds{#1}}
+\define@key[Dnd]{Category}{Flaws}{\def\dnd@Category@Flaws{#1}}
 
 \define@key[Dnd]{Character}{Name}{\def\dnd@Character@Name{#1}}
 \define@key[Dnd]{Character}{Class}{\def\dnd@Character@Class{#1}}
@@ -150,7 +154,7 @@
 		Character={},Ability={},Inspiration={},Proficiency={},
 		Skill={},Perception={},Proficiencies={},Armor={},Initiative=0,
 		Speed={},Hitpoints={},Hitdices={},Weapons={},Money={},
-		Equipment={},#1}
+		Equipment={},Traits={},Ideals={},Bonds={},Flaws={},#1}
 
 	\includepdf[pages=1, pagecommand={\ifthispageodd{
 		\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
@@ -579,8 +583,7 @@
 		%
 		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-2.9) {%
 			\setstretch{1.1}\small
-			\parbox[][1.5 cm][t]{5.2 cm}{
-			}
+			\parbox[][1.5 cm][t]{5.2 cm}{\dnd@Category@Traits}
 		};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -592,8 +595,7 @@
 		%
 		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-5.02) {%
 			\setstretch{1.1}\small
-			\parbox[][1 cm][t]{5.2 cm}{
-			}
+			\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Ideals}
 		};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -605,8 +607,7 @@
 		%
 		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-6.92) {%
 			\setstretch{1.1}\small
-			\parbox[][1 cm][t]{5.2 cm}{
-			}
+			\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Bonds}
 		};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -618,8 +619,7 @@
 		%
 		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-8.82) {%
 			\setstretch{1.1}\small
-			\parbox[][1 cm][t]{5.2 cm}{
-			}
+			\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Flaws}
 		};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
