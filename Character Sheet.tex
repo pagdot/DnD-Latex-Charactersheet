@@ -40,6 +40,9 @@
 	Count={0},Dice={},#1}}
 \define@key[Dnd]{Category}{Weapons}{\setkeys[Dnd]{Weapons}{
 	Weapon1={},Weapon2={},Weapon3={},Notes={},#1}}
+\define@key[Dnd]{Category}{Money}{\setkeys[Dnd]{Money}{
+	Copper=0,Silver=0,Electrum=0,Gold=0,Platin=0,#1}}
+\define@key[Dnd]{Category}{Equipment}{\def\dnd@Category@Equipment{#1}}
 
 \define@key[Dnd]{Character}{Name}{\def\dnd@Character@Name{#1}}
 \define@key[Dnd]{Character}{Class}{\def\dnd@Character@Class{#1}}
@@ -99,6 +102,11 @@
 	Name={},AtkBonus={},Damage={},Type={},#1}}
 \define@key[Dnd]{Weapons}{Notes}{\def\dnd@Weapons@Notes{#1}}
 
+\define@key[Dnd]{Money}{Copper}{\def\dnd@Money@Copper{#1}}
+\define@key[Dnd]{Money}{Silver}{\def\dnd@Money@Silver{#1}}
+\define@key[Dnd]{Money}{Electrum}{\def\dnd@Money@Electrum{#1}}
+\define@key[Dnd]{Money}{Gold}{\def\dnd@Money@Gold{#1}}
+\define@key[Dnd]{Money}{Platin}{\def\dnd@Money@Platin{#1}}
 
 
 
@@ -140,8 +148,9 @@
 \newcommand\DndCharacterSheet[1]{
 	\setkeys[Dnd]{Category}{
 		Character={},Ability={},Inspiration={},Proficiency={},
-		Skill={},Perception={},Proficiencies={},Armor={},Initiative=0
-		,Speed={},Hitpoints={},Hitdices={},Weapons={},#1}
+		Skill={},Perception={},Proficiencies={},Armor={},Initiative=0,
+		Speed={},Hitpoints={},Hitdices={},Weapons={},Money={},
+		Equipment={},#1}
 
 	\includepdf[pages=1, pagecommand={\ifthispageodd{
 		\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
@@ -539,15 +548,15 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Copper
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.04) {};
+		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.04) {\dnd@Money@Copper};
 		% Silver
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.94) {};
+		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.94) {\dnd@Money@Silver};
 		% Electrum
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-19.83) {};
+		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-19.83) {\dnd@Money@Electrum};
 		% Gold
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-20.73) {2020};
+		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-20.73) {\dnd@Money@Gold};
 		% Platin
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-21.62) {};
+		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-21.62) {\dnd@Money@Platin};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -558,15 +567,7 @@
 		%
 		\node[draw=none,rectangle,text width=4.15 cm,align=left] at (6.95,-20.56) {%
 			\setstretch{0.98}\small
-			\parbox[][5.2 cm][t]{4.2 cm}{
-				Necklace (arcane focus) \\
-				Knife \\
-				Waterskin \\
-				9 Rations \\
-				Studded leather armor \\
-				Box with 2 bandages \\
-				Wand of Winter
-			}
+			\parbox[][5.2 cm][t]{4.2 cm}{\dnd@Category@Equipment}
 		};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -703,7 +704,7 @@
 \begin{document}
 	\pagenumbering{gobble}
 
-	%\DndCharacterSheet{}
+	\DndCharacterSheet{}
 
 	\DndCharacterSheet{
 		Character={
@@ -770,6 +771,18 @@
 				Damage=1d6,
 				Type=Piercing
 			}
+		},
+		Money={
+			Gold=2020
+		},
+		Equipment={
+			Necklace (arcane focus) \\
+			Knife \\
+			Waterskin \\
+			9 Rations \\
+			Studded leather armor \\
+			Box with 2 bandages \\
+			Wand of Winter
 		}
 	}
 
