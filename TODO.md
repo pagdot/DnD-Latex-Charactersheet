@@ -1,6 +1,5 @@
 # TODO
 
-+ Hide undefined values instead of setting default values
 + support spell sheet
 + fix warnings
 + log custom warnings

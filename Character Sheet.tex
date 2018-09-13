@@ -13,12 +13,8 @@
 
 \makeatletter
 
-\define@key[Dnd]{Category}{Character}{\setkeys[Dnd]{Character}{
-	Name={},Class={},Background={},Player={},
-	Race={},Alignment={},Exp={},#1}}
-\define@key[Dnd]{Category}{Ability}{\setkeys[Dnd]{Ability}{
-	Strength={0},Dexterity={0},Constitution={0},Intelligence={0},
-	Wisdom={0},Charisma={0},#1}}
+\define@key[Dnd]{Category}{Character}{\setkeys[Dnd]{Character}{#1}}
+\define@key[Dnd]{Category}{Ability}{\setkeys[Dnd]{Ability}{#1}}
 \define@key[Dnd]{Category}{Inspiration}{\def\dnd@Category@Inspiration{#1}}
 \define@key[Dnd]{Category}{Proficiency}{\setkeys[Dnd]{Proficiency}{
 	Strength=false,Dexterity=false,Constitution=false,
@@ -34,14 +30,10 @@
 \define@key[Dnd]{Category}{Armor}{\def\dnd@Category@Armor{#1}}
 \define@key[Dnd]{Category}{Initiative}{\def\dnd@Category@Initiative{#1}}
 \define@key[Dnd]{Category}{Speed}{\def\dnd@Category@Speed{#1}}
-\define@key[Dnd]{Category}{Hitpoints}{\setkeys[Dnd]{Hitpoints}{
-	Maximum={},Current={},Temporary={},#1}}
-\define@key[Dnd]{Category}{Hitdices}{\setkeys[Dnd]{Hitdices}{
-	Count={0},Dice={},#1}}
-\define@key[Dnd]{Category}{Weapons}{\setkeys[Dnd]{Weapons}{
-	Weapon1={},Weapon2={},Weapon3={},Notes={},#1}}
-\define@key[Dnd]{Category}{Money}{\setkeys[Dnd]{Money}{
-	Copper=0,Silver=0,Electrum=0,Gold=0,Platin=0,#1}}
+\define@key[Dnd]{Category}{Hitpoints}{\setkeys[Dnd]{Hitpoints}{#1}}
+\define@key[Dnd]{Category}{Hitdices}{\setkeys[Dnd]{Hitdices}{#1}}
+\define@key[Dnd]{Category}{Weapons}{\setkeys[Dnd]{Weapons}{#1}}
+\define@key[Dnd]{Category}{Money}{\setkeys[Dnd]{Money}{#1}}
 \define@key[Dnd]{Category}{Equipment}{\def\dnd@Category@Equipment{#1}}
 \define@key[Dnd]{Category}{Traits}{\def\dnd@Category@Traits{#1}}
 \define@key[Dnd]{Category}{Ideals}{\def\dnd@Category@Ideals{#1}}
@@ -152,12 +144,7 @@
 \ExplSyntaxOff
 
 \newcommand\DndCharacterSheet[1]{
-	\setkeys[Dnd]{Category}{
-		Character={},Ability={},Inspiration={},Proficiency={},
-		Skill={},Perception={},Proficiencies={},Armor={},Initiative=0,
-		Speed={},Hitpoints={},Hitdices={},Weapons={},Money={},
-		Equipment={},Traits={},Ideals={},Bonds={},Flaws={},
-		Features={},Notes={},#1}
+	\setkeys[Dnd]{Category}{Skill={},Proficiency={},#1}
 
 	\includepdf[pages=1, pagecommand={\ifthispageodd{
 		\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
@@ -171,19 +158,33 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Character Name
-		\node[draw=none,rectangle,text width=5.7 cm,align=center] at (0.3,0.4) {\huge \dnd@Character@Name};
+		\ifdefined\dnd@Character@Name
+			\node[draw=none,rectangle,text width=5.7 cm,align=center] at (0.3,0.4) {\huge \dnd@Character@Name};
+		\fi
 		% Class & level
-		\node[draw=none,rectangle,text width=3.5 cm] at (6.7 , 0.8) {\dnd@Character@Class};
+		\ifdefined\dnd@Character@Class
+			\node[draw=none,rectangle,text width=3.5 cm] at (6.7 , 0.8) {\dnd@Character@Class};
+		\fi
 		% Background
-		\node[draw=none,rectangle,text width=3.0 cm] at (10.3, 0.8) {\dnd@Character@Background};
-		% Player name
-		\node[draw=none,rectangle,text width=3.0 cm] at (13.7, 0.8) {\dnd@Character@Player};
+		\ifdefined\dnd@Character@Background
+			\node[draw=none,rectangle,text width=3.0 cm] at (10.3, 0.8) {\dnd@Character@Background};
+		\fi
+			% Player name
+		\ifdefined\dnd@Character@Player
+			\node[draw=none,rectangle,text width=3.0 cm] at (13.7, 0.8) {\dnd@Character@Player};
+		\fi
 		% Race
-		\node[draw=none,rectangle,text width=3.5 cm] at (6.7 ,-0.1) {\dnd@Character@Race};
+		\ifdefined\dnd@Character@Race
+			\node[draw=none,rectangle,text width=3.5 cm] at (6.7 ,-0.1) {\dnd@Character@Race};
+		\fi
 		% Alignment
-		\node[draw=none,rectangle,text width=3.0 cm] at (10.3,-0.1) {\dnd@Character@Alignment};
+		\ifdefined\dnd@Character@Alignment
+			\node[draw=none,rectangle,text width=3.0 cm] at (10.3,-0.1) {\dnd@Character@Alignment};
+		\fi
 		% Experience points
-		\node[draw=none,rectangle,text width=3.0 cm] at (13.7,-0.1) {\dnd@Character@Exp};
+		\ifdefined\dnd@Character@Exp
+			\node[draw=none,rectangle,text width=3.0 cm] at (13.7,-0.1) {\dnd@Character@Exp};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -192,17 +193,29 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Strength
-		\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,- 3.81) {\dnd@Ability@Strength};
+		\ifdefined\dnd@Ability@Strength
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,- 3.81) {\dnd@Ability@Strength};
+		\fi
 		% Dexterity
-		\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,- 6.27) {\dnd@Ability@Dexterity};
+		\ifdefined\dnd@Ability@Dexterity
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,- 6.27) {\dnd@Ability@Dexterity};
+		\fi
 		% Constitution
-		\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,- 8.73) {\dnd@Ability@Constitution};
+		\ifdefined\dnd@Ability@Constitution
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,- 8.73) {\dnd@Ability@Constitution};
+		\fi
 		% Intelligence
-		\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,-11.19) {\dnd@Ability@Intelligence};
+		\ifdefined\dnd@Ability@Intelligence
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,-11.19) {\dnd@Ability@Intelligence};
+		\fi
 		% Wisdom
-		\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,-13.65) {\dnd@Ability@Wisdom};
+		\ifdefined\dnd@Ability@Wisdom
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,-13.65) {\dnd@Ability@Wisdom};
+		\fi
 		% Charisma
-		\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,-16.11) {\dnd@Ability@Charisma};
+		\ifdefined\dnd@Ability@Charisma
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.34,-16.11) {\dnd@Ability@Charisma};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -211,23 +224,35 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
         % Strength
-        \node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,- 2.95) {
-            \huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Strength}}};
+        \ifdefined\dnd@Ability@Strength
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,- 2.95) {
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Strength}}};
+		\fi
         % Dexterity
-        \node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,- 5.41) {
-            \huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}};		
+        \ifdefined\dnd@Ability@Dexterity
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,- 5.41) {
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}};		
+		\fi
         % Constitution
-        \node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,- 7.87) {
-            \huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Constitution}}};
+        \ifdefined\dnd@Ability@Constitution
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,- 7.87) {
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Constitution}}};
+		\fi
         % Intelligence
-        \node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,-10.33) {
-            \huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}};
+        \ifdefined\dnd@Ability@Intelligence
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,-10.33) {
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}};
+		\fi
         % Wisdom
-        \node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,-12.77) {
-            \huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}};		
+        \ifdefined\dnd@Ability@Wisdom
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,-12.77) {
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}};		
+		\fi
         % Charisma
-        \node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,-15.25) {
-            \huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Charisma}}};
+        \ifdefined\dnd@Ability@Charisma
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,-15.25) {
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\dnd@Ability@Charisma}}};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -235,7 +260,9 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=0.5 cm,align=center] at (-0.6,-2) {$\dnd@Category@Inspiration$};
+		\ifdefined\dnd@Category@Inspiration
+			\node[draw=none,rectangle,text width=0.5 cm,align=center] at (-0.6,-2) {$\dnd@Category@Inspiration$};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -243,32 +270,9 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=0.5 cm,align=center] at (-0.56,-3.27) {$+3$};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   Saving throws values
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Strength
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-4.45) {\small 
-			\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Strength}}{\dnd@Proficiency@Strength}}};
-		% Dexterity
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-4.91) {\small 
-			\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Proficiency@Dexterity}}};
-		% Constitution
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-5.37) {\small 
-			\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Constitution}}{\dnd@Proficiency@Constitution}}};
-		% Intelligence
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-5.84) {\small 
-			\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Proficiency@Intelligence}}};
-		% Wisdom
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-6.30) {\small 
-			\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Proficiency@Wisdom}}};
-		% Charisma
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-6.76) {\small 
-			\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Proficiency@Charisma}}};
+		\ifdefined\dnd@Proficiency@Bonus
+			\node[draw=none,rectangle,text width=0.5 cm,align=center] at (-0.56,-3.27) {$+3$};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -304,64 +308,42 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		%   Skill values
+		%   Saving throws values
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Acrobatics
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 8.40) {\small 
-			\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Skill@Acrobatics}}};
-		% Animal handling
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 8.86) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Animals}}};
-		% Arcana
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 9.33) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Arcana}}};
-		% Athletics
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 9.79) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Strength}}{\dnd@Skill@Athletics}}};
-		% Deception
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-10.26) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Deception}}};
-		% History
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-10.72) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@History}}};
-		% Insight
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-11.18) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Insight}}};
-		% Intimidation
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-11.65) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Intimidation}}};
-		% Investigation
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-12.11) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Investigation}}};
-		% Medicine
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-12.58) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Medicine}}};
-		% Nature
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-13.04) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Nature}}};
-		% Perception
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-13.50) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Perception}}};
-		% Performance
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-13.96) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Performance}}};
-		% Persuasion
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-14.43) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Persuasion}}};
-		% Religion
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-14.89) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Religion}}};
-		% Sleight of hand
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-15.36) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Skill@SleightOfHand}}};
-		% Stealth
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-15.82) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Skill@Stealth}}};
-		% Survival
-		\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-16.28) {\small 
-		\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Survival}}};
+		\ifdefined\dnd@Proficiency@Bonus
+			% Strength
+			\ifdefined\dnd@Ability@Charisma
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-4.45) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Strength}}{\dnd@Proficiency@Strength}}};
+			\fi
+			% Dexterity
+			\ifdefined\dnd@Ability@Dexterity
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-4.91) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Proficiency@Dexterity}}};
+			\fi
+			% Constitution
+			\ifdefined\dnd@Ability@Constitution
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-5.37) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Constitution}}{\dnd@Proficiency@Constitution}}};
+			\fi
+			% Intelligence
+			\ifdefined\dnd@Ability@Intelligence
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-5.84) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Proficiency@Intelligence}}};
+			\fi
+			% Wisdom
+			\ifdefined\dnd@Ability@Wisdom
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-6.30) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Proficiency@Wisdom}}};
+			\fi
+			% Charisma
+			\ifdefined\dnd@Ability@Charisma
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-6.76) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Proficiency@Charisma}}};
+			\fi
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -445,11 +427,112 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
+		%   Skill values
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		\ifdefined\dnd@Proficiency@Bonus
+			% Acrobatics
+			\ifdefined\dnd@Ability@Dexterity
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 8.40) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Skill@Acrobatics}}};
+			\fi
+			% Animal handling
+			\ifdefined\dnd@Ability@Wisdom
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 8.86) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Animals}}};
+			\fi
+			% Arcana
+			\ifdefined\dnd@Ability@Intelligence
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 9.33) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Arcana}}};
+			\fi
+			% Athletics
+			\ifdefined\dnd@Ability@Strength
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,- 9.79) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Strength}}{\dnd@Skill@Athletics}}};
+			\fi
+			% Deception
+			\ifdefined\dnd@Ability@Charisma
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-10.26) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Deception}}};
+			\fi
+			% History
+			\ifdefined\dnd@Ability@Intelligence
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-10.72) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@History}}};
+			\fi
+			% Insight
+			\ifdefined\dnd@Ability@Wisdom
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-11.18) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Insight}}};
+			\fi
+			% Intimidation
+			\ifdefined\dnd@Ability@Charisma
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-11.65) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Intimidation}}};
+			\fi
+			% Investigation
+			\ifdefined\dnd@Ability@Intelligence
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-12.11) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Investigation}}};
+			\fi
+			% Medicine
+			\ifdefined\dnd@Ability@Wisdom
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-12.58) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Medicine}}};
+			\fi
+			% Nature
+			\ifdefined\dnd@Ability@Intelligence
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-13.04) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Nature}}};
+			\fi
+			% Perception
+			\ifdefined\dnd@Ability@Wisdom
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-13.50) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Perception}}};
+			\fi
+			% Performance
+			\ifdefined\dnd@Ability@Charisma
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-13.96) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Performance}}};
+			\fi
+			% Persuasion
+			\ifdefined\dnd@Ability@Charisma
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-14.43) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Charisma}}{\dnd@Skill@Persuasion}}};
+			\fi
+			% Religion
+			\ifdefined\dnd@Ability@Intelligence
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-14.89) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Intelligence}}{\dnd@Skill@Religion}}};
+			\fi
+			% Sleight of hand
+			\ifdefined\dnd@Ability@Dexterity
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-15.36) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Skill@SleightOfHand}}};
+			\fi
+			% Stealth
+			\ifdefined\dnd@Ability@Dexterity
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-15.82) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Dexterity}}{\dnd@Skill@Stealth}}};
+			\fi
+			% Survival
+			\ifdefined\dnd@Ability@Wisdom
+				\node[draw=none,rectangle,text width=0.5 cm,align=right] at (-0.20,-16.28) {\small 
+					\DndDisplaySignedNum{\DndGetSavingThrow{\DndGetAbilityModifier{\dnd@Ability@Wisdom}}{\dnd@Skill@Survival}}};
+			\fi
+		\fi
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
 		%   Passive wisdom (perception)
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.82,-17.77) {\dnd@Category@Perception};
+		\ifdefined\dnd@Category@Perception
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.82,-17.77) {\dnd@Category@Perception};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -458,10 +541,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=5.7 cm,align=left] at (-0.3,-20.93) {%
-			\setstretch{0.98}\small
-			\parbox[][4.4 cm][t]{5.7 cm}{\dnd@Category@Proficiencies}
-		};
+		\ifdefined\dnd@Category@Proficiencies
+			\node[draw=none,rectangle,text width=5.7 cm,align=left] at (-0.3,-20.93) {%
+				\setstretch{0.98}\small
+				\parbox[][4.4 cm][t]{5.7 cm}{\dnd@Category@Proficiencies}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -470,11 +555,17 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Armor class
-		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (4.2,-2.4) {\huge \dnd@Category@Armor};	
+		\ifdefined\dnd@Category@Armor
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (4.2,-2.4) {\huge \dnd@Category@Armor};	
+		\fi
 		% Initiative
-		\node[draw=none,rectangle,text width=1.2 cm,align=center] at (6.12,-2.64) {\Huge \DndDisplaySignedNum{\dnd@Category@Initiative}};
+		\ifdefined\dnd@Category@Initiative
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (6.12,-2.64) {\Huge \DndDisplaySignedNum{\dnd@Category@Initiative}};
+		\fi
 		% Speed
-		\node[draw=none,rectangle,text width=1.2 cm,align=center] at (8.15,-2.64) {\Huge \dnd@Category@Speed};	
+		\ifdefined\dnd@Category@Speed
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (8.15,-2.64) {\Huge \dnd@Category@Speed};	
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -483,17 +574,23 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Hit point maximum
-		\node[draw=none,rectangle,text width=3 cm,align=left] at (7.2,-4.15) {\dnd@Hitpoints@Maximum};
+		\ifdefined\dnd@Hitpoints@Maximum
+			\node[draw=none,rectangle,text width=3 cm,align=left] at (7.2,-4.15) {\dnd@Hitpoints@Maximum};
+		\fi
 		% Current hit points (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (6.21,-5) {%
-			\setstretch{0.98}\small
-			\parbox[][0.9 cm][t]{5.2 cm}{\dnd@Hitpoints@Current}
-		};
+		\ifdefined\dnd@Hitpoints@Maximum
+			\node[draw=none,rectangle,text width=5.2 cm,align=left] at (6.21,-5) {%
+				\setstretch{0.98}\small
+				\parbox[][0.9 cm][t]{5.2 cm}{\dnd@Hitpoints@Current}
+			};
+		\fi
 		% Temporary hit points (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (6.21,-6.8) {%
-			\setstretch{0.98}\small
-			\parbox[][1 cm][t]{5.2 cm}{\dnd@Hitpoints@Temporary}
-		};
+		\ifdefined\dnd@Hitpoints@Maximum
+			\node[draw=none,rectangle,text width=5.2 cm,align=left] at (6.21,-6.8) {%
+				\setstretch{0.98}\small
+				\parbox[][1 cm][t]{5.2 cm}{\dnd@Hitpoints@Temporary}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -501,18 +598,22 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Total hit dices
-		\node[draw=none,rectangle,text width=1.6 cm,align=left] at (5.00,-8.28) {\dnd@Hitdices@Count\dnd@Hitdices@Dice};
-		% Current hit dices (no need to edit, made only to mark on paper)
-		\pgfmathparse{floor(0.5*\dnd@Hitdices@Count)-1}
-		\ifnum \dnd@Hitdices@Count > 1
-		\foreach \i in {0,...,\pgfmathresult}{		
-			\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\dnd@Hitdices@Count-1)/2)/2 - \i)},-8.7) {};
-			\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\dnd@Hitdices@Count-1)/2)/2 - \i)},-9.1) {};
-		}
-		\fi
-		\ifodd \dnd@Hitdices@Count
-			\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75+0.4*(\dnd@Hitdices@Count-1)/4},-8.9) {};
+		\ifdefined\dnd@Hitdices@Count
+			% Total hit dices
+			\ifdefined\dnd@Hitdices@Dice
+				\node[draw=none,rectangle,text width=1.6 cm,align=left] at (5.00,-8.28) {\dnd@Hitdices@Count\dnd@Hitdices@Dice};
+			\fi
+			% Current hit dices (no need to edit, made only to mark on paper)
+			\pgfmathparse{floor(0.5*\dnd@Hitdices@Count)-1}
+			\ifnum \dnd@Hitdices@Count > 1
+			\foreach \i in {0,...,\pgfmathresult}{		
+				\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\dnd@Hitdices@Count-1)/2)/2 - \i)},-8.7) {};
+				\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\dnd@Hitdices@Count-1)/2)/2 - \i)},-9.1) {};
+			}
+			\fi
+			\ifodd \dnd@Hitdices@Count
+				\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75+0.4*(\dnd@Hitdices@Count-1)/4},-8.9) {};
+			\fi
 		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -522,31 +623,51 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% First Weapon: Name
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-10.96) {\dnd@WeaponA@Name};
+		\ifdefined\dnd@WeaponA@Name
+			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-10.96) {\dnd@WeaponA@Name};
+		\fi
 		% First Weapon: Attack bonus
-		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-10.96) {\dnd@WeaponA@AtkBonus};
+		\ifdefined\dnd@WeaponA@Name
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-10.96) {\dnd@WeaponA@AtkBonus};
+		\fi
 		% First Weapon: damage / type
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-10.96) {\dnd@WeaponA@Damage/\dnd@WeaponA@Type};
+		\ifdefined\dnd@WeaponA@Name
+			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-10.96) {\dnd@WeaponA@Damage/\dnd@WeaponA@Type};
+		\fi
 		%
 		% Second Weapon: Name
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-11.65) {\dnd@WeaponB@Name};
+		\ifdefined\dnd@WeaponB@Name
+			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-11.65) {\dnd@WeaponB@Name};
+		\fi
 		% Second Weapon: Attack bonus
-		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-11.65) {\dnd@WeaponB@AtkBonus};
+		\ifdefined\dnd@WeaponB@Name
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-11.65) {\dnd@WeaponB@AtkBonus};
+		\fi
 		% Second Weapon: damage / type
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-11.65) {\dnd@WeaponB@Damage/\dnd@WeaponB@Type};
+		\ifdefined\dnd@WeaponB@Name
+			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-11.65) {\dnd@WeaponB@Damage/\dnd@WeaponB@Type};
+		\fi
 		%
 		% Third Weapon: Name
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-12.37) {\dnd@WeaponC@Name};
+		\ifdefined\dnd@WeaponC@Name
+			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-12.37) {\dnd@WeaponC@Name};
+		\fi
 		% Third Weapon: Attack bonus
-		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-12.37) {\dnd@WeaponC@AtkBonus};
+		\ifdefined\dnd@WeaponC@Name
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-12.37) {\dnd@WeaponC@AtkBonus};
+		\fi
 		% Third Weapon: damage / type
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-12.37) {\dnd@WeaponC@Damage/\dnd@WeaponC@Type};
+		\ifdefined\dnd@WeaponC@Name
+			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-12.37) {\dnd@WeaponC@Damage/\dnd@WeaponC@Type};
+		\fi
 		%
 		% Weapon notes (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.22,-14.73) {%
-			\setstretch{0.98}\small
-			\parbox[][3.9 cm][t]{5.9 cm}{\dnd@Weapons@Notes}
-		};
+		\ifdefined\dnd@Weapons@Notes
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.22,-14.73) {%
+				\setstretch{0.98}\small
+				\parbox[][3.9 cm][t]{5.9 cm}{\dnd@Weapons@Notes}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -555,15 +676,25 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Copper
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.04) {\dnd@Money@Copper};
+		\ifdefined\dnd@Money@Copper
+			\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.04) {\dnd@Money@Copper};
+		\fi
 		% Silver
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.94) {\dnd@Money@Silver};
+		\ifdefined\dnd@Money@Copper
+			\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-18.94) {\dnd@Money@Silver};
+		\fi
 		% Electrum
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-19.83) {\dnd@Money@Electrum};
+		\ifdefined\dnd@Money@Copper
+			\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-19.83) {\dnd@Money@Electrum};
+		\fi
 		% Gold
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-20.73) {\dnd@Money@Gold};
+		\ifdefined\dnd@Money@Copper
+			\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-20.73) {\dnd@Money@Gold};
+		\fi
 		% Platin
-		\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-21.62) {\dnd@Money@Platin};
+		\ifdefined\dnd@Money@Copper
+			\node[draw=none,rectangle,text width=1 cm,align=center] at (4.08,-21.62) {\dnd@Money@Platin};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -572,10 +703,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=4.15 cm,align=left] at (6.95,-20.56) {%
-			\setstretch{0.98}\small
-			\parbox[][5.2 cm][t]{4.2 cm}{\dnd@Category@Equipment}
-		};
+		\ifdefined\dnd@Category@Equipment
+			\node[draw=none,rectangle,text width=4.15 cm,align=left] at (6.95,-20.56) {%
+				\setstretch{0.98}\small
+				\parbox[][5.2 cm][t]{4.2 cm}{\dnd@Category@Equipment}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -584,10 +717,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-2.9) {%
-			\setstretch{1.1}\small
-			\parbox[][1.5 cm][t]{5.2 cm}{\dnd@Category@Traits}
-		};
+		\ifdefined\dnd@Category@Traits
+			\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-2.9) {%
+				\setstretch{1.1}\small
+				\parbox[][1.5 cm][t]{5.2 cm}{\dnd@Category@Traits}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -596,10 +731,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-5.02) {%
-			\setstretch{1.1}\small
-			\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Ideals}
-		};
+		\ifdefined\dnd@Category@Ideals
+			\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-5.02) {%
+				\setstretch{1.1}\small
+				\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Ideals}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -608,10 +745,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-6.92) {%
-			\setstretch{1.1}\small
-			\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Bonds}
-		};
+		\ifdefined\dnd@Category@Bonds
+			\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-6.92) {%
+				\setstretch{1.1}\small
+				\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Bonds}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -620,10 +759,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-8.82) {%
-			\setstretch{1.1}\small
-			\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Flaws}
-		};
+		\ifdefined\dnd@Category@Flaws
+			\node[draw=none,rectangle,text width=5.2 cm,align=left] at (12.7,-8.82) {%
+				\setstretch{1.1}\small
+				\parbox[][1 cm][t]{5.2 cm}{\dnd@Category@Flaws}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -632,10 +773,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=5.8 cm,align=left] at (12.7,-16.8) {%
-			\setstretch{0.975}\small
-			\parbox[][12.7 cm][t]{5.8 cm}{\dnd@Category@Features}
-		};
+		\ifdefined\dnd@Category@Features
+			\node[draw=none,rectangle,text width=5.8 cm,align=left] at (12.7,-16.8) {%
+				\setstretch{0.975}\small
+				\parbox[][12.7 cm][t]{5.8 cm}{\dnd@Category@Features}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -644,22 +787,24 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=6.1 cm,align=left] at (12.7,-16.85) {%
-			\tiny
-			\parbox[][12.9 cm][b]{6.1 cm}{
-				\tcbset{
-					frame code={},
-					left=0pt,
-					right=0pt,
-					top=0pt,
-					bottom=0pt,
-					colback=white!30,
-					width=\dimexpr\textwidth\relax,
-					arc=0pt,outer arc=0pt,
+		\ifdefined\dnd@Category@Notes
+			\node[draw=none,rectangle,text width=6.1 cm,align=left] at (12.7,-16.85) {%
+				\tiny
+				\parbox[][12.9 cm][b]{6.1 cm}{
+					\tcbset{
+						frame code={},
+						left=0pt,
+						right=0pt,
+						top=0pt,
+						bottom=0pt,
+						colback=white!30,
+						width=\dimexpr\textwidth\relax,
+						arc=0pt,outer arc=0pt,
+					}
+					\begin{tcolorbox}\dnd@Category@Notes\end{tcolorbox}
 				}
-				\begin{tcolorbox}\dnd@Category@Notes\end{tcolorbox}
-			}
-		};
+			};
+		\fi
 		%
 		\end{tikzpicture}}]{base.pdf}
 }
