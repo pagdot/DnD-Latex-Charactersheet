@@ -91,16 +91,31 @@
 \define@key[Dnd]{Hitdices}{Dice}{\def\dnd@Hitdices@Dice{#1}}
 
 
+\define@key[Dnd]{Weapons}{Weapon1}{\setkeys[Dnd]{Weapon1}{
+	Name={},AtkBonus={},Damage={},Type={},#1}}
+\define@key[Dnd]{Weapons}{Weapon2}{\setkeys[Dnd]{Weapon2}{
+	Name={},AtkBonus={},Damage={},Type={},#1}}
+\define@key[Dnd]{Weapons}{Weapon3}{\setkeys[Dnd]{Weapon3}{
+	Name={},AtkBonus={},Damage={},Type={},#1}}
+\define@key[Dnd]{Weapons}{Notes}{\def\dnd@Weapons@Notes{#1}}
+
+
+
+
 \define@key[Dnd]{Weapon1}{Name}{\def\dnd@WeaponA@Name{#1}}
 \define@key[Dnd]{Weapon1}{AtkBonus}{\def\dnd@WeaponA@AtkBonus{#1}}
 \define@key[Dnd]{Weapon1}{Damage}{\def\dnd@WeaponA@Damage{#1}}
 \define@key[Dnd]{Weapon1}{Type}{\def\dnd@WeaponA@Type{#1}}
 
-\define@key[Dnd]{Weapons}{Weapon1}{\setkeys[Dnd]{Weapon1}{
-	Name={},AtkBonus={},Damage={},Type={},#1}}
-\define@key[Dnd]{Weapons}{Weapon2}{\def\dnd@Weapons@WeaponB{#1}}
-\define@key[Dnd]{Weapons}{Weapon3}{\def\dnd@Weapons@WeaponC{#1}}
-\define@key[Dnd]{Weapons}{Notes}{\def\dnd@Weapons@Weapon1{#1}}
+\define@key[Dnd]{Weapon2}{Name}{\def\dnd@WeaponB@Name{#1}}
+\define@key[Dnd]{Weapon2}{AtkBonus}{\def\dnd@WeaponB@AtkBonus{#1}}
+\define@key[Dnd]{Weapon2}{Damage}{\def\dnd@WeaponB@Damage{#1}}
+\define@key[Dnd]{Weapon2}{Type}{\def\dnd@WeaponB@Type{#1}}
+
+\define@key[Dnd]{Weapon3}{Name}{\def\dnd@WeaponC@Name{#1}}
+\define@key[Dnd]{Weapon3}{AtkBonus}{\def\dnd@WeaponC@AtkBonus{#1}}
+\define@key[Dnd]{Weapon3}{Damage}{\def\dnd@WeaponC@Damage{#1}}
+\define@key[Dnd]{Weapon3}{Type}{\def\dnd@WeaponC@Type{#1}}
 
 
 \ExplSyntaxOn
@@ -496,24 +511,25 @@
 		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-10.96) {\dnd@WeaponA@AtkBonus};
 		% First Weapon: damage / type
 		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-10.96) {\dnd@WeaponA@Damage/\dnd@WeaponA@Type};
+		%
 		% Second Weapon: Name
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-11.65) {};
+		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-11.65) {\dnd@WeaponB@Name};
 		% Second Weapon: Attack bonus
-		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-11.65) {};
+		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-11.65) {\dnd@WeaponB@AtkBonus};
 		% Second Weapon: damage / type
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-11.65) {};
+		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-11.65) {\dnd@WeaponB@Damage/\dnd@WeaponB@Type};
+		%
 		% Third Weapon: Name
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-12.37) {};
+		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-12.37) {\dnd@WeaponC@Name};
 		% Third Weapon: Attack bonus
-		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-12.37) {};
+		\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-12.37) {\dnd@WeaponC@AtkBonus};
 		% Third Weapon: damage / type
-		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-12.37) {};
+		\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-12.37) {\dnd@WeaponC@Damage/\dnd@WeaponC@Type};
 		%
 		% Weapon notes (Sperate lines with '\\')
 		\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.22,-14.73) {%
 			\setstretch{0.98}\small
-			\parbox[][3.9 cm][t]{5.9 cm}{
-			}
+			\parbox[][3.9 cm][t]{5.9 cm}{\dnd@Weapons@Notes}
 		};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -687,49 +703,7 @@
 \begin{document}
 	\pagenumbering{gobble}
 
-	\DndCharacterSheet{}
-
-	\DndCharacterSheet{
-		Character={
-			Name=Gamoreth, 
-			Class=Warlock Lvl. 7,
-			Background={},
-			Player=Paul, 
-			Race=Human, 
-			Alignment=Chaos neutral, 
-			Exp=2300
-		},
-		Ability={
-			Strength=8,
-			Dexterity=12,
-			Constitution=14,
-			Intelligence=10,
-			Wisdom=10,
-			Charisma=16
-		},
-		Inspiration={},
-		Proficiency={
-			Bonus=3,
-			Wisdom,
-			Charisma
-		},
-		Skill={
-			Arcana,
-			Deception,
-			History,
-			Intimidation,
-			Medicine
-		},
-		Perception={},
-		Proficiencies={
-			Light armor \\
-			Simple weapons \\
-			\\
-			Common \\
-			Abyssal \\
-			Undercommon
-		},
-	}
+	%\DndCharacterSheet{}
 
 	\DndCharacterSheet{
 		Character={
@@ -788,6 +762,12 @@
 				Name=Spear,
 				AtkBonus={},
 				Damage=1d8,
+				Type=Piercing
+			},
+			Weapon2={
+				Name=Dagger,
+				AtkBonus={},
+				Damage=1d6,
 				Type=Piercing
 			}
 		}
