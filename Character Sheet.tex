@@ -6,453 +6,127 @@
 \begin{document}
 	\pagenumbering{gobble}
 
-	\DndCharacterSheet{}
+	%\DndCharacterSheet{}
 
-	\DndCharacterSheet{
-		Character={
-			Name=Gamoreth, 
-			Class=Warlock Lvl. 7,
-			Background={},
-			Player=Paul, 
-			Race=Human, 
-			Alignment=Chaos neutral, 
-			Exp=2300
-		},
-		Ability={
-			Strength=8,
-			Dexterity=12,
-			Constitution=14,
-			Intelligence=10,
-			Wisdom=10,
-			Charisma=16
-		},
-		Inspiration={},
-		Proficiency={
-			Bonus=3,
-			Wisdom,
-			Charisma
-		},
-		Skill={
-			Arcana,
-			Deception,
-			History,
-			Intimidation,
-			Medicine
-		},
-		Perception={},
-		Proficiencies={
-			Light armor \\
-			Simple weapons \\
-			\\
-			Common \\
-			Abyssal \\
-			Undercommon
-		},
-		Armor=13,
-		Initiative=1,
-		Speed=30,
-		Hitpoints={
-			Maximum=(53) 14,
-			Current=9,
-			Temporary={}
-		},
-		Hitdices={
-			Count=7,
-			Dice=d8
-		},
-		Weapons={
-			Weapon1={
-				Name=Spear,
-				AtkBonus={},
-				Damage=1d8,
-				Type=Piercing
-			},
-			Weapon2={
-				Name=Dagger,
-				AtkBonus={},
-				Damage=1d6,
-				Type=Piercing
-			}
-		},
-		Money={
-			Gold=2020
-		},
-		Equipment={
-			Necklace (arcane focus) \\
-			Knife \\
-			Waterskin \\
-			9 Rations \\
-			Studded leather armor \\
-			Box with 2 bandages \\
-			Wand of Winter
-		},
-		Features={
-			War Caster \\
-			Agonizing Blast \\
-			Devils Sight \\
-			Repelling Blast \\
-			Ghostly Gaze \\
-			\\
-			Pact of the Tome \\
-			Fiend Patron \\
-			Dark One's Blessing
-		},
-		Notes={
-			War Caster:
-			\begin{itemize}%
-				\item You have advantage on Constitution saving throws to maintain your concentration on a spell when you take damage.
-				\item  You can perform the somatic components of spells even when you have equpied weapons or a shield.
-				\item Cast a spell (1 action, target is creature) instead of a oppertunity attack
-			\end{itemize}
-			%
-			Agonizing Blast: Eldritch Blast +CHA DMG Bonus \\%
-			\\%
-			Repelling Blast: Eldrith blast pushes the target up to 10 feet further away from you \\
-			\\
-			Devil’s Sight: You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet. \\
-			\\
-			Ghostly Gaze: Look through a solid object (up to 30 foot) once every short/long rest
-			\\
-			Pact of the Tome: Book of Shadows (Spellbook) \\
-			\\
-			Fiend Patron: Expanded Spell list \\
-			Dark One's Blessing: CHA-Mod + Lvl temp. HP when reducing a hostile creature to 0 HP \\
-			\\
-			Dark One's Own Luck: add d10 to an ability check or saving throw once every short rest \\
-			\\
-			Bandages: restore d10 hp during short rest \\
-			\\
-			Im Wirtshaus von Gob heiße ich Taron, Thentam bei den Kultisten \\
-			\\
-			Dragongleam (Spear): "Tiamat’s Eyes Shine" is engraved on Shaft \\
-			Wand of Winter (7 uses, recharging): Ray of Frost (costs 1), Sleetstorm (costs 3, Icestorm (costs 4) Current Uses: 0
-		}
-	}
-
-	\pagebreak
-	
-	
-	\includepdf[pages=1, pagecommand={\ifthispageodd{
-			\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
-		} {
-			\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(-1.31,0)}]
-		}
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   Spell Casting Informations
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spellcasting Class
-		\node[draw=none,rectangle,text width=6.8 cm,align=center] at (0.9,0.2) {\huge Warlock};
-		% Spellcasting Ability
-		\node[draw=none,rectangle,text width=1.5 cm,align=center] at (6.58 , 0.45) {\huge CHA};
-		% Spell Save DC
-		\node[draw=none,rectangle,text width=1.5 cm,align=center] at (10.05, 0.45) {\huge 14};
-		% Spell Attack Bonus
-		\node[draw=none,rectangle,text width=1.5 cm,align=center] at (13.55, 0.45) {\huge +6};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   Cantrips
-		%   (Sperate lines with '\\')
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		\node[draw=none,rectangle,text width=5.7 cm,align=left] at (-0.3,-5.05) {%
-			\setstretch{1.24}\small
-			\parbox[][3.6 cm][t]{5.7 cm}{
-				Eldritch Blast (Cha damage bonus) \\
-				Mage Hand \\
-				Prestidigation \\
-				\\
-				Spell Book (Pact of Tome): \\
-				\-\hspace{1em} Fire Bolt \\
-				\-\hspace{1em} Minor Illusion \\
-				\-\hspace{1em} Mending
-			}
-		};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   1. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-1.8,-8.3) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i-0.9,-8.3) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (-0.1,-12.15) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Burning Hands
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,- 9.29) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,- 9.77) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-10.25) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-10.73) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-11.21) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-11.69) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-12.18) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-12.66) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-13.14) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-13.62) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-14.10) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-14.58) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-15.06) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   2. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-1.8,-16.15) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i-.9,-16.15) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (-0.1,-19.93) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Invisibility \\
-				Misty Step \\
-				Spider Climb
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-17.07) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-17.55) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-18.03) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-18.52) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-18.99) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-19.47) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-19.95) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-20.44) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-20.91) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-21.39) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-21.87) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-22.35) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-22.83) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   3. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-2.55) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-2.55) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-6.28) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Fire Ball \\
-				Hunger of Hadar \\
-				Tongues
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 3.46) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 3.94) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 4.42) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 4.90) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 5.38) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 5.86) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 6.34) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 6.83) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 7.31) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 7.79) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 8.27) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 8.75) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 9.23) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   4. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-10.30) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		\foreach \i in {1,...,2} {
-			\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-10.30) {};
-		}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-14.08) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Wall of Fire
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-11.21) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-11.69) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-12.17) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-12.65) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-13.13) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-13.61) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-14.09) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-14.57) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-15.05) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-15.53) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-16.01) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-16.49) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-16.97) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   5. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-18.07) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-18.07) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-20.85) {%
-			\setstretch{1.24}\small
-			\parbox[][4.1 cm][t]{5.3 cm}{
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-18.99) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-19.47) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-19.95) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-20.43) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-20.91) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-21.39) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-21.87) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-22.35) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-22.83) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   6. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-2.55) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-2.55) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-5.32) {%
-			\setstretch{1.24}\small
-			\parbox[][4.1 cm][t]{5.3 cm}{
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 3.46) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 3.94) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 4.42) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 4.90) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 5.38) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 5.86) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 6.34) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 6.83) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 7.31) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   7. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-8.38) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-8.38) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-11.15) {%
-			\setstretch{1.24}\small
-			\parbox[][4.1 cm][t]{5.3 cm}{
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 9.29) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 9.77) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-10.25) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-10.73) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-11.21) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-11.69) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-12.18) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-12.66) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-13.14) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   8. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-14.20) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-14.20) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-16.48) {%
-			\setstretch{1.25}\small
-			\parbox[][3.1 cm][t]{5.3 cm}{
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-15.12) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-15.60) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-16.08) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-16.56) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-17.04) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-17.52) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-18.00) {};
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		%   9. Level Spells
-		%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-19.04) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-19.04) {};
-		%}
-		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-21.31) {%
-			\setstretch{1.25}\small
-			\parbox[][3.1 cm][t]{5.3 cm}{
-			}
-		};
-		% Prepared spell (uncomment to activate)
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-19.95) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-20.43) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-20.91) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-21.39) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-21.87) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-22.35) {};
-		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-22.84) {};
-		\end{tikzpicture}}]{spells.pdf}
-
+	%\DndCharacterSheet{
+	%	Character={
+	%		Name=Gamoreth, 
+	%		Class=Warlock Lvl. 7,
+	%		Background={},
+	%		Player=Paul, 
+	%		Race=Human, 
+	%		Alignment=Chaos neutral, 
+	%		Exp=2300
+	%	},
+	%	Ability={
+	%		Strength=8,
+	%		Dexterity=12,
+	%		Constitution=14,
+	%		Intelligence=10,
+	%		Wisdom=10,
+	%		Charisma=16
+	%	},
+	%	Inspiration={},
+	%	Proficiency={
+	%		Bonus=3,
+	%		Wisdom,
+	%		Charisma
+	%	},
+	%	Skill={
+	%		Arcana,
+	%		Deception,
+	%		History,
+	%		Intimidation,
+	%		Medicine
+	%	},
+	%	Perception={},
+	%	Proficiencies={
+	%		Light armor \\
+	%		Simple weapons \\
+	%		\\
+	%		Common \\
+	%		Abyssal \\
+	%		Undercommon
+	%	},
+	%	Armor=13,
+	%	Initiative=1,
+	%	Speed=30,
+	%	Hitpoints={
+	%		Maximum=(53) 14,
+	%		Current=9,
+	%		Temporary={}
+	%	},
+	%	Hitdices={
+	%		Count=7,
+	%		Dice=d8
+	%	},
+	%	Weapons={
+	%		Weapon1={
+	%			Name=Spear,
+	%			AtkBonus={},
+	%			Damage=1d8,
+	%			Type=Piercing
+	%		},
+	%		Weapon2={
+	%			Name=Dagger,
+	%			AtkBonus={},
+	%			Damage=1d6,
+	%			Type=Piercing
+	%		}
+	%	},
+	%	Money={
+	%		Gold=2020
+	%	},
+	%	Equipment={
+	%		Necklace (arcane focus) \\
+	%		Knife \\
+	%		Waterskin \\
+	%		9 Rations \\
+	%		Studded leather armor \\
+	%		Box with 2 bandages \\
+	%		Wand of Winter
+	%	},
+	%	Features={
+	%		War Caster \\
+	%		Agonizing Blast \\
+	%		Devils Sight \\
+	%		Repelling Blast \\
+	%		Ghostly Gaze \\
+	%		\\
+	%		Pact of the Tome \\
+	%		Fiend Patron \\
+	%		Dark One's Blessing
+	%	},
+	%	Notes={
+	%		War Caster:
+	%		\begin{itemize}%
+	%			\item You have advantage on Constitution saving throws to maintain your concentration on a spell when you take damage.
+	%			\item  You can perform the somatic components of spells even when you have equpied weapons or a shield.
+	%			\item Cast a spell (1 action, target is creature) instead of a oppertunity attack
+	%		\end{itemize}
+	%		%
+	%		Agonizing Blast: Eldritch Blast +CHA DMG Bonus \\%
+	%		\\%
+	%		Repelling Blast: Eldrith blast pushes the target up to 10 feet further away from you \\
+	%		\\
+	%		Devil’s Sight: You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet. \\
+	%		\\
+	%		Ghostly Gaze: Look through a solid object (up to 30 foot) once every short/long rest
+	%		\\
+	%		Pact of the Tome: Book of Shadows (Spellbook) \\
+	%		\\
+	%		Fiend Patron: Expanded Spell list \\
+	%		Dark One's Blessing: CHA-Mod + Lvl temp. HP when reducing a hostile creature to 0 HP \\
+	%		\\
+	%		Dark One's Own Luck: add d10 to an ability check or saving throw once every short rest \\
+	%		\\
+	%		Bandages: restore d10 hp during short rest \\
+	%		\\
+	%		Im Wirtshaus von Gob heiße ich Taron, Thentam bei den Kultisten \\
+	%		\\
+	%		Dragongleam (Spear): "Tiamat’s Eyes Shine" is engraved on Shaft \\
+	%		Wand of Winter (7 uses, recharging): Ray of Frost (costs 1), Sleetstorm (costs 3, Icestorm (costs 4) Current Uses: 0
+	%	}
+	%}
 \end{document}
                                                             
