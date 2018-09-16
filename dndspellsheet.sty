@@ -12,120 +12,48 @@
 \RequirePackage{xparse}
 
 \DeclareOptionX{base}{\def\basepdf{#1}}
-%\DeclareOption*{\PackageWarning{dndcharactersheet}{Unknown option ‘\CurrentOption’}}
-%\DeclareOption*{\def\basepdf{\CurrentOption}}
 \ProcessOptionsX\relax
 
+\define@key[DndSpells]{Base}{Class}{\def\DndSpells@Base@Class{#1}}
+\define@key[DndSpells]{Base}{Ability}{\def\DndSpells@Base@Ability{#1}}
+\define@key[DndSpells]{Base}{AtkBonus}{\def\DndSpells@Base@AtkBonus{#1}}
+\define@key[DndSpells]{Base}{Cantrips}{\def\DndSpells@Base@Cantrips{#1}}
+\define@key[DndSpells]{Base}{Level1}{\setkeys[DndSpells]{Level1}{#1}}
+\define@key[DndSpells]{Base}{Level2}{\setkeys[DndSpells]{Level2}{#1}}
+\define@key[DndSpells]{Base}{Level3}{\setkeys[DndSpells]{Level3}{#1}}
+\define@key[DndSpells]{Base}{Level4}{\setkeys[DndSpells]{Level4}{#1}}
+\define@key[DndSpells]{Base}{Level5}{\setkeys[DndSpells]{Level5}{#1}}
+\define@key[DndSpells]{Base}{Level6}{\setkeys[DndSpells]{Level6}{#1}}
+\define@key[DndSpells]{Base}{Level7}{\setkeys[DndSpells]{Level7}{#1}}
+\define@key[DndSpells]{Base}{Level8}{\setkeys[DndSpells]{Level8}{#1}}
+\define@key[DndSpells]{Base}{Level9}{\setkeys[DndSpells]{Level9}{#1}}
 
-\define@key[Dnd]{Category}{Character}{\setkeys[Dnd]{Character}{#1}}
-\define@key[Dnd]{Category}{Ability}{\setkeys[Dnd]{Ability}{#1}}
-\define@key[Dnd]{Category}{Inspiration}{\def\dnd@Category@Inspiration{#1}}
-\define@key[Dnd]{Category}{Proficiency}{\setkeys[Dnd]{Proficiency}{
-	Strength=false,Dexterity=false,Constitution=false,
-	Intelligence=false,Wisdom=false,Charisma=false,#1}}
-\define@key[Dnd]{Category}{Skill}{\setkeys[Dnd]{Skill}{
-	Acrobatics=false,Animals=false,Arcana=false,Athletics=false,
-	Deception=false,History=false,Insight=false,Intimidation=false,
-	Investigation=false,Medicine=false,Nature=false,Perception=false,
-	Performance=false,Persuasion=false,Religion=false,
-	SleightOfHand=false,Stealth=false,Survival=false,#1}}
-\define@key[Dnd]{Category}{Perception}{\def\dnd@Category@Perception{#1}}
-\define@key[Dnd]{Category}{Proficiencies}{\def\dnd@Category@Proficiencies{#1}}
-\define@key[Dnd]{Category}{Armor}{\def\dnd@Category@Armor{#1}}
-\define@key[Dnd]{Category}{Initiative}{\def\dnd@Category@Initiative{#1}}
-\define@key[Dnd]{Category}{Speed}{\def\dnd@Category@Speed{#1}}
-\define@key[Dnd]{Category}{Hitpoints}{\setkeys[Dnd]{Hitpoints}{#1}}
-\define@key[Dnd]{Category}{Hitdices}{\setkeys[Dnd]{Hitdices}{#1}}
-\define@key[Dnd]{Category}{Weapons}{\setkeys[Dnd]{Weapons}{#1}}
-\define@key[Dnd]{Category}{Money}{\setkeys[Dnd]{Money}{#1}}
-\define@key[Dnd]{Category}{Equipment}{\def\dnd@Category@Equipment{#1}}
-\define@key[Dnd]{Category}{Traits}{\def\dnd@Category@Traits{#1}}
-\define@key[Dnd]{Category}{Ideals}{\def\dnd@Category@Ideals{#1}}
-\define@key[Dnd]{Category}{Bonds}{\def\dnd@Category@Bonds{#1}}
-\define@key[Dnd]{Category}{Flaws}{\def\dnd@Category@Flaws{#1}}
-\define@key[Dnd]{Category}{Features}{\def\dnd@Category@Features{#1}}
-\define@key[Dnd]{Category}{Notes}{\def\dnd@Category@Notes{#1}}
+\define@key[DndSpells]{Level1}{Slots}{\def\dnd@LevelA@Slots{#1}}
+\define@key[DndSpells]{Level1}{Spells}{\def\dnd@LevelA@Spells{#1}}
 
-\define@key[Dnd]{Character}{Name}{\def\dnd@Character@Name{#1}}
-\define@key[Dnd]{Character}{Class}{\def\dnd@Character@Class{#1}}
-\define@key[Dnd]{Character}{Background}{\def\dnd@Character@Background{#1}}
-\define@key[Dnd]{Character}{Player}{\def\dnd@Character@Player{#1}}
-\define@key[Dnd]{Character}{Race}{\def\dnd@Character@Race{#1}}
-\define@key[Dnd]{Character}{Alignment}{\def\dnd@Character@Alignment{#1}}
-\define@key[Dnd]{Character}{Exp}{\def\dnd@Character@Exp{#1}}
+\define@key[DndSpells]{Level2}{Slots}{\def\dnd@LevelB@Slots{#1}}
+\define@key[DndSpells]{Level2}{Spells}{\def\dnd@LevelB@Spells{#1}}
 
-\define@key[Dnd]{Ability}{Strength}{\def\dnd@Ability@Strength{#1}}
-\define@key[Dnd]{Ability}{Dexterity}{\def\dnd@Ability@Dexterity{#1}}
-\define@key[Dnd]{Ability}{Constitution}{\def\dnd@Ability@Constitution{#1}}
-\define@key[Dnd]{Ability}{Intelligence}{\def\dnd@Ability@Intelligence{#1}}
-\define@key[Dnd]{Ability}{Wisdom}{\def\dnd@Ability@Wisdom{#1}}
-\define@key[Dnd]{Ability}{Charisma}{\def\dnd@Ability@Charisma{#1}}
+\define@key[DndSpells]{Level3}{Slots}{\def\dnd@LevelB@Slots{#1}}
+\define@key[DndSpells]{Level3}{Spells}{\def\dnd@LevelB@Spells{#1}}
 
-\define@key[Dnd]{Proficiency}{Bonus}{\def\dnd@Proficiency@Bonus{#1}}
-\define@key[Dnd]{Proficiency}{Strength}[true]{\def\dnd@Proficiency@Strength{#1}}
-\define@key[Dnd]{Proficiency}{Dexterity}[true]{\def\dnd@Proficiency@Dexterity{#1}}
-\define@key[Dnd]{Proficiency}{Constitution}[true]{\def\dnd@Proficiency@Constitution{#1}}
-\define@key[Dnd]{Proficiency}{Intelligence}[true]{\def\dnd@Proficiency@Intelligence{#1}}
-\define@key[Dnd]{Proficiency}{Wisdom}[true]{\def\dnd@Proficiency@Wisdom{#1}}
-\define@key[Dnd]{Proficiency}{Charisma}[true]{\def\dnd@Proficiency@Charisma{#1}}
+\define@key[DndSpells]{Level4}{Slots}{\def\dnd@LevelC@Slots{#1}}
+\define@key[DndSpells]{Level4}{Spells}{\def\dnd@LevelC@Spells{#1}}
 
-\define@key[Dnd]{Skill}{Acrobatics}[true]{\def\dnd@Skill@Acrobatics{#1}}
-\define@key[Dnd]{Skill}{Animals}[true]{\def\dnd@Skill@Animals{#1}}
-\define@key[Dnd]{Skill}{Arcana}[true]{\def\dnd@Skill@Arcana{#1}}
-\define@key[Dnd]{Skill}{Athletics}[true]{\def\dnd@Skill@Athletics{#1}}
-\define@key[Dnd]{Skill}{Deception}[true]{\def\dnd@Skill@Deception{#1}}
-\define@key[Dnd]{Skill}{History}[true]{\def\dnd@Skill@History{#1}}
-\define@key[Dnd]{Skill}{Insight}[true]{\def\dnd@Skill@Insight{#1}}
-\define@key[Dnd]{Skill}{Intimidation}[true]{\def\dnd@Skill@Intimidation{#1}}
-\define@key[Dnd]{Skill}{Investigation}[true]{\def\dnd@Skill@Investigation{#1}}
-\define@key[Dnd]{Skill}{Medicine}[true]{\def\dnd@Skill@Medicine{#1}}
-\define@key[Dnd]{Skill}{Nature}[true]{\def\dnd@Skill@Nature{#1}}
-\define@key[Dnd]{Skill}{Perception}[true]{\def\dnd@Skill@Perception{#1}}
-\define@key[Dnd]{Skill}{Performance}[true]{\def\dnd@Skill@Performance{#1}}
-\define@key[Dnd]{Skill}{Persuasion}[true]{\def\dnd@Skill@Persuasion{#1}}
-\define@key[Dnd]{Skill}{Religion}[true]{\def\dnd@Skill@Religion{#1}}
-\define@key[Dnd]{Skill}{SleightOfHand}[true]{\def\dnd@Skill@SleightOfHand{#1}}
-\define@key[Dnd]{Skill}{Stealth}[true]{\def\dnd@Skill@Stealth{#1}}
-\define@key[Dnd]{Skill}{Survival}[true]{\def\dnd@Skill@Survival{#1}}
+\define@key[DndSpells]{Level5}{Slots}{\def\dnd@LevelD@Slots{#1}}
+\define@key[DndSpells]{Level5}{Spells}{\def\dnd@LevelD@Spells{#1}}
 
-\define@key[Dnd]{Hitpoints}{Maximum}{\def\dnd@Hitpoints@Maximum{#1}}
-\define@key[Dnd]{Hitpoints}{Current}{\def\dnd@Hitpoints@Current{#1}}
-\define@key[Dnd]{Hitpoints}{Temporary}{\def\dnd@Hitpoints@Temporary{#1}}
+\define@key[DndSpells]{Level6}{Slots}{\def\dnd@LevelE@Slots{#1}}
+\define@key[DndSpells]{Level6}{Spells}{\def\dnd@LevelE@Spells{#1}}
 
-\define@key[Dnd]{Hitdices}{Count}{\def\dnd@Hitdices@Count{#1}}
-\define@key[Dnd]{Hitdices}{Dice}{\def\dnd@Hitdices@Dice{#1}}
+\define@key[DndSpells]{Level7}{Slots}{\def\dnd@LevelF@Slots{#1}}
+\define@key[DndSpells]{Level7}{Spells}{\def\dnd@LevelF@Spells{#1}}
 
+\define@key[DndSpells]{Level8}{Slots}{\def\dnd@LevelG@Slots{#1}}
+\define@key[DndSpells]{Level8}{Spells}{\def\dnd@LevelG@Spells{#1}}
 
-\define@key[Dnd]{Weapons}{Weapon1}{\setkeys[Dnd]{Weapon1}{
-	Name={},AtkBonus={},Damage={},Type={},#1}}
-\define@key[Dnd]{Weapons}{Weapon2}{\setkeys[Dnd]{Weapon2}{
-	Name={},AtkBonus={},Damage={},Type={},#1}}
-\define@key[Dnd]{Weapons}{Weapon3}{\setkeys[Dnd]{Weapon3}{
-	Name={},AtkBonus={},Damage={},Type={},#1}}
-\define@key[Dnd]{Weapons}{Notes}{\def\dnd@Weapons@Notes{#1}}
-
-\define@key[Dnd]{Money}{Copper}{\def\dnd@Money@Copper{#1}}
-\define@key[Dnd]{Money}{Silver}{\def\dnd@Money@Silver{#1}}
-\define@key[Dnd]{Money}{Electrum}{\def\dnd@Money@Electrum{#1}}
-\define@key[Dnd]{Money}{Gold}{\def\dnd@Money@Gold{#1}}
-\define@key[Dnd]{Money}{Platin}{\def\dnd@Money@Platin{#1}}
-
-
-
-\define@key[Dnd]{Weapon1}{Name}{\def\dnd@WeaponA@Name{#1}}
-\define@key[Dnd]{Weapon1}{AtkBonus}{\def\dnd@WeaponA@AtkBonus{#1}}
-\define@key[Dnd]{Weapon1}{Damage}{\def\dnd@WeaponA@Damage{#1}}
-\define@key[Dnd]{Weapon1}{Type}{\def\dnd@WeaponA@Type{#1}}
-
-\define@key[Dnd]{Weapon2}{Name}{\def\dnd@WeaponB@Name{#1}}
-\define@key[Dnd]{Weapon2}{AtkBonus}{\def\dnd@WeaponB@AtkBonus{#1}}
-\define@key[Dnd]{Weapon2}{Damage}{\def\dnd@WeaponB@Damage{#1}}
-\define@key[Dnd]{Weapon2}{Type}{\def\dnd@WeaponB@Type{#1}}
-
-\define@key[Dnd]{Weapon3}{Name}{\def\dnd@WeaponC@Name{#1}}
-\define@key[Dnd]{Weapon3}{AtkBonus}{\def\dnd@WeaponC@AtkBonus{#1}}
-\define@key[Dnd]{Weapon3}{Damage}{\def\dnd@WeaponC@Damage{#1}}
-\define@key[Dnd]{Weapon3}{Type}{\def\dnd@WeaponC@Type{#1}}
+\define@key[DndSpells]{Level9}{Slots}{\def\dnd@LevelH@Slots{#1}}
+\define@key[DndSpells]{Level9}{Spells}{\def\dnd@LevelH@Spells{#1}}
 
 
 \ExplSyntaxOn
@@ -139,16 +67,10 @@
 	{ $   #1 $ }
 	{ $ + #1 $ }
 }
-
-\NewExpandableDocumentCommand\DndGetSavingThrow{m m}{
-	\str_if_eq:NNTF {#2} {true}
-	{\fp_eval:n{#1 + \dnd@Proficiency@Bonus}}
-	{#1}
-}
 \ExplSyntaxOff
 
 \newcommand\DndCharacterSheet[1]{
-	\setkeys[Dnd]{Category}{Skill={},Proficiency={},#1}
+	\setkeys[DndSpells]{Base}{#1}
 
 	\includepdf[pages=1, pagecommand={\ifthispageodd{
 			\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
