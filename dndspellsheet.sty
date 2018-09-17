@@ -11,11 +11,12 @@
 \RequirePackage{ifthen}
 \RequirePackage{xparse}
 
-\DeclareOptionX{base}{\def\basepdf{#1}}
+\DeclareOptionX{base}{\def\spellpdf{#1}}
 \ProcessOptionsX\relax
 
 \define@key[DndSpells]{Base}{Class}{\def\DndSpells@Base@Class{#1}}
 \define@key[DndSpells]{Base}{Ability}{\def\DndSpells@Base@Ability{#1}}
+\define@key[DndSpells]{Base}{SaveDC}{\def\DndSpells@Base@SaveDC{#1}}
 \define@key[DndSpells]{Base}{AtkBonus}{\def\DndSpells@Base@AtkBonus{#1}}
 \define@key[DndSpells]{Base}{Cantrips}{\def\DndSpells@Base@Cantrips{#1}}
 \define@key[DndSpells]{Base}{Level1}{\setkeys[DndSpells]{Level1}{#1}}
@@ -28,48 +29,44 @@
 \define@key[DndSpells]{Base}{Level8}{\setkeys[DndSpells]{Level8}{#1}}
 \define@key[DndSpells]{Base}{Level9}{\setkeys[DndSpells]{Level9}{#1}}
 
-\define@key[DndSpells]{Level1}{Slots}{\def\dnd@LevelA@Slots{#1}}
-\define@key[DndSpells]{Level1}{Spells}{\def\dnd@LevelA@Spells{#1}}
+\define@key[DndSpells]{Level1}{Slots}{\def\DndSpells@LevelA@Slots{#1}}
+\define@key[DndSpells]{Level1}{Spells}{\def\DndSpells@LevelA@Spells{#1}}
 
-\define@key[DndSpells]{Level2}{Slots}{\def\dnd@LevelB@Slots{#1}}
-\define@key[DndSpells]{Level2}{Spells}{\def\dnd@LevelB@Spells{#1}}
+\define@key[DndSpells]{Level2}{Slots}{\def\DndSpells@LevelB@Slots{#1}}
+\define@key[DndSpells]{Level2}{Spells}{\def\DndSpells@LevelB@Spells{#1}}
 
-\define@key[DndSpells]{Level3}{Slots}{\def\dnd@LevelB@Slots{#1}}
-\define@key[DndSpells]{Level3}{Spells}{\def\dnd@LevelB@Spells{#1}}
+\define@key[DndSpells]{Level3}{Slots}{\def\DndSpells@LevelC@Slots{#1}}
+\define@key[DndSpells]{Level3}{Spells}{\def\DndSpells@LevelC@Spells{#1}}
 
-\define@key[DndSpells]{Level4}{Slots}{\def\dnd@LevelC@Slots{#1}}
-\define@key[DndSpells]{Level4}{Spells}{\def\dnd@LevelC@Spells{#1}}
+\define@key[DndSpells]{Level4}{Slots}{\def\DndSpells@LevelD@Slots{#1}}
+\define@key[DndSpells]{Level4}{Spells}{\def\DndSpells@LevelD@Spells{#1}}
 
-\define@key[DndSpells]{Level5}{Slots}{\def\dnd@LevelD@Slots{#1}}
-\define@key[DndSpells]{Level5}{Spells}{\def\dnd@LevelD@Spells{#1}}
+\define@key[DndSpells]{Level5}{Slots}{\def\DndSpells@LevelE@Slots{#1}}
+\define@key[DndSpells]{Level5}{Spells}{\def\DndSpells@LevelE@Spells{#1}}
 
-\define@key[DndSpells]{Level6}{Slots}{\def\dnd@LevelE@Slots{#1}}
-\define@key[DndSpells]{Level6}{Spells}{\def\dnd@LevelE@Spells{#1}}
+\define@key[DndSpells]{Level6}{Slots}{\def\DndSpells@LevelF@Slots{#1}}
+\define@key[DndSpells]{Level6}{Spells}{\def\DndSpells@LevelF@Spells{#1}}
 
-\define@key[DndSpells]{Level7}{Slots}{\def\dnd@LevelF@Slots{#1}}
-\define@key[DndSpells]{Level7}{Spells}{\def\dnd@LevelF@Spells{#1}}
+\define@key[DndSpells]{Level7}{Slots}{\def\DndSpells@LevelG@Slots{#1}}
+\define@key[DndSpells]{Level7}{Spells}{\def\DndSpells@LevelG@Spells{#1}}
 
-\define@key[DndSpells]{Level8}{Slots}{\def\dnd@LevelG@Slots{#1}}
-\define@key[DndSpells]{Level8}{Spells}{\def\dnd@LevelG@Spells{#1}}
+\define@key[DndSpells]{Level8}{Slots}{\def\DndSpells@LevelH@Slots{#1}}
+\define@key[DndSpells]{Level8}{Spells}{\def\DndSpells@LevelH@Spells{#1}}
 
-\define@key[DndSpells]{Level9}{Slots}{\def\dnd@LevelH@Slots{#1}}
-\define@key[DndSpells]{Level9}{Spells}{\def\dnd@LevelH@Spells{#1}}
+\define@key[DndSpells]{Level9}{Slots}{\def\DndSpells@LevelI@Slots{#1}}
+\define@key[DndSpells]{Level9}{Spells}{\def\DndSpells@LevelI@Spells{#1}}
 
 
 \ExplSyntaxOn
-\NewExpandableDocumentCommand\DndGetAbilityModifier{m}{
-	\fp_eval:n{trunc(#1 / 2 - 5, 0)}
-}
-
-\NewExpandableDocumentCommand\DndDisplaySignedNum{m}{
-	\int_compare:nNnTF
-	{ #1 } < { 0 }
-	{ $   #1 $ }
-	{ $ + #1 $ }
-}
+%\NewExpandableDocumentCommand\DndDisplaySignedNum{m}{
+%	\int_compare:nNnTF
+%	{ #1 } < { 0 }
+%	{ $   #1 $ }
+%	{ $ + #1 $ }
+%}
 \ExplSyntaxOff
 
-\newcommand\DndCharacterSheet[1]{
+\newcommand\DndSpellSheet[1]{
 	\setkeys[DndSpells]{Base}{#1}
 
 	\includepdf[pages=1, pagecommand={\ifthispageodd{
@@ -84,13 +81,21 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Spellcasting Class
-		\node[draw=none,rectangle,text width=6.8 cm,align=center] at (0.9,0.2) {\huge Warlock};
+		\ifdefined\DndSpells@Base@Class
+			\node[draw=none,rectangle,text width=6.8 cm,align=center] at (0.9,0.2) {\huge \DndSpells@Base@Class};
+		\fi
 		% Spellcasting Ability
-		\node[draw=none,rectangle,text width=1.5 cm,align=center] at (6.58 , 0.45) {\huge CHA};
+		\ifdefined\DndSpells@Base@Ability
+			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (6.58 , 0.45) {\huge \DndSpells@Base@Ability};
+		\fi
 		% Spell Save DC
-		\node[draw=none,rectangle,text width=1.5 cm,align=center] at (10.05, 0.45) {\huge 14};
+		\ifdefined\DndSpells@Base@SaveDC
+			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (10.05, 0.45) {\huge \DndDisplaySignedNum{\DndSpells@Base@SaveDC}};
+		\fi
 		% Spell Attack Bonus
-		\node[draw=none,rectangle,text width=1.5 cm,align=center] at (13.55, 0.45) {\huge +6};
+		\ifdefined\DndSpells@Base@AtkBonus
+			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (13.55, 0.45) {\huge \DndSpells@Base@AtkBonus};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -99,19 +104,12 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=5.7 cm,align=left] at (-0.3,-5.05) {%
-			\setstretch{1.24}\small
-			\parbox[][3.6 cm][t]{5.7 cm}{
-				Eldritch Blast (Cha damage bonus) \\
-				Mage Hand \\
-				Prestidigation \\
-				\\
-				Spell Book (Pact of Tome): \\
-				\-\hspace{1em} Fire Bolt \\
-				\-\hspace{1em} Minor Illusion \\
-				\-\hspace{1em} Mending
-			}
-		};
+		\ifdefined\DndSpells@Base@Class
+			\node[draw=none,rectangle,text width=5.7 cm,align=left] at (-0.3,-5.05) {%
+				\setstretch{1.24}\small
+				\parbox[][3.6 cm][t]{5.7 cm}{\DndSpells@Base@Cantrips}
+			};
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -119,19 +117,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-1.8,-8.3) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i-0.9,-8.3) {};
-		%}
+		\ifdefined\DndSpells@LevelA@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-1.8,-8.3) {\Large \DndSpells@LevelA@Slots};
+			% Spell Slots Expended
+			\ifnum \DndSpells@LevelA@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelA@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i-0.9,-8.3) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (-0.1,-12.15) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Burning Hands
-			}
-		};
+		\ifdefined\DndSpells@LevelA@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (-0.1,-12.15) {%
+				\setstretch{1.24}\small
+				\parbox[][6. cm][t]{5.3 cm}{\DndSpells@LevelA@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,- 9.29) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,- 9.77) {};
@@ -153,21 +155,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-1.8,-16.15) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i-.9,-16.15) {};
-		%}
+		\ifdefined\DndSpells@LevelB@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-1.8,-16.15) {\Large \DndSpells@LevelB@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelB@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelB@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i-.9,-16.15) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (-0.1,-19.93) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Invisibility \\
-				Misty Step \\
-				Spider Climb
-			}
-		};
+		\ifdefined\DndSpells@LevelB@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (-0.1,-19.93) {%
+				\setstretch{1.24}\small
+				\parbox[][6. cm][t]{5.3 cm}{\DndSpells@LevelB@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-17.07) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (-3.08,-17.55) {};
@@ -189,21 +193,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-2.55) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-2.55) {};
-		%}
+		\ifdefined\DndSpells@LevelC@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-2.55) {\Large \DndSpells@LevelC@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelC@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelC@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-2.55) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-6.28) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Fire Ball \\
-				Hunger of Hadar \\
-				Tongues
-			}
-		};
+		\ifdefined\DndSpells@LevelC@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-6.28) {%
+				\setstretch{1.24}\small
+				\parbox[][6. cm][t]{5.3 cm}{\DndSpells@LevelC@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 3.46) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,- 3.94) {};
@@ -225,18 +231,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-10.30) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		\foreach \i in {1,...,2} {
-			\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-10.30) {};
-		}
+		\ifdefined\DndSpells@LevelD@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-10.30) {\Large \DndSpells@LevelD@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelD@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelD@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-10.30) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-14.08) {%
-			\setstretch{1.24}\small
-			\parbox[][6. cm][t]{5.3 cm}{
-				Wall of Fire
-			}
-		};
+		\ifdefined\DndSpells@LevelD@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-14.08) {%
+				\setstretch{1.24}\small
+				\parbox[][6. cm][t]{5.3 cm}{\DndSpells@LevelD@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-11.21) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-11.69) {};
@@ -258,18 +269,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-18.07) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-18.07) {};
-		%}
+		\ifdefined\DndSpells@LevelE@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.3 cm,align=center] at (4.68,-18.07) {\Large \DndSpells@LevelE@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelE@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelE@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+5.58,-18.07) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-20.85) {%
-			\setstretch{1.24}\small
-			\parbox[][4.1 cm][t]{5.3 cm}{
-			}
-		};
+		\ifdefined\DndSpells@LevelE@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (6.38,-20.85) {%
+				\setstretch{1.24}\small
+				\parbox[][4.1 cm][t]{5.3 cm}{\DndSpells@LevelE@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-18.99) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (3.41,-19.47) {};
@@ -287,18 +303,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-2.55) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-2.55) {};
-		%}
+		\ifdefined\DndSpells@LevelF@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-2.55) {\Large \DndSpells@LevelF@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelF@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelF@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-2.55) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-5.32) {%
-			\setstretch{1.24}\small
-			\parbox[][4.1 cm][t]{5.3 cm}{
-			}
-		};
+		\ifdefined\DndSpells@LevelF@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-5.32) {%
+				\setstretch{1.24}\small
+				\parbox[][4.1 cm][t]{5.3 cm}{\DndSpells@LevelF@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 3.46) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 3.94) {};
@@ -316,18 +337,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-8.38) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-8.38) {};
-		%}
+		\ifdefined\DndSpells@LevelG@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-8.38) {\Large \DndSpells@LevelG@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelG@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelG@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-8.38) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-11.15) {%
-			\setstretch{1.24}\small
-			\parbox[][4.1 cm][t]{5.3 cm}{
-			}
-		};
+		\ifdefined\DndSpells@LevelG@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-11.15) {%
+				\setstretch{1.24}\small
+				\parbox[][4.1 cm][t]{5.3 cm}{\DndSpells@LevelG@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 9.29) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,- 9.77) {};
@@ -345,18 +371,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-14.20) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-14.20) {};
-		%}
+		\ifdefined\DndSpells@LevelH@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-14.20) {\Large \DndSpells@LevelH@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelH@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelH@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-14.20) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-16.48) {%
-			\setstretch{1.25}\small
-			\parbox[][3.1 cm][t]{5.3 cm}{
-			}
-		};
+		\ifdefined\DndSpells@LevelH@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-16.48) {%
+				\setstretch{1.25}\small
+				\parbox[][3.1 cm][t]{5.3 cm}{\DndSpells@LevelH@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-15.12) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-15.60) {};
@@ -372,18 +403,23 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Spell Slots
-		%\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-19.04) {\Large 2};
-		% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
-		%\foreach \i in {1,...,2} {
-		%	\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-19.04) {};
-		%}
+		\ifdefined\DndSpells@LevelI@Slots 
+			% Spell Slots
+			\node[draw=none,rectangle,text width=1.3 cm,align=center] at (11.12,-19.04) {\Large \DndSpells@LevelI@Slots};
+			% Spell Slots Expended (in '\foreach \i in {1,...,cnt}' set spell slots as cnt)
+			\ifnum \DndSpells@LevelI@Slots > 0
+				\foreach \i in {1,...,\DndSpells@LevelI@Slots} {
+					\node[draw,circle,inner sep=3pt,label=,thick] at (0.4*\i+12.02,-19.04) {};
+				}
+			\fi
+		\fi
 		% Spell List (Sperate lines with '\\')
-		\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-21.31) {%
-			\setstretch{1.25}\small
-			\parbox[][3.1 cm][t]{5.3 cm}{
-			}
-		};
+		\ifdefined\DndSpells@LevelI@Spells 
+			\node[draw=none,rectangle,text width=5.3 cm,align=left] at (12.82,-21.31) {%
+				\setstretch{1.25}\small
+				\parbox[][3.1 cm][t]{5.3 cm}{\DndSpells@LevelI@Spells}
+			};
+		\fi
 		% Prepared spell (uncomment to activate)
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-19.95) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-20.43) {};
@@ -392,5 +428,5 @@
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-21.87) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-22.35) {};
 		%\node[circle,fill,inner sep=1.2pt,label=] at (9.83,-22.84) {};
-		\end{tikzpicture}}]{spells.pdf}
+		\end{tikzpicture}}]{\spellpdf}
 } 
