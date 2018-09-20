@@ -93,12 +93,9 @@
 \define@key[DndBase]{Hitdices}{Count}{\def\@DndBase@Hitdices@Count{#1}}
 \define@key[DndBase]{Hitdices}{Dice}{\def\@DndBase@Hitdices@Dice{#1}}
 
-\define@key[DndBase]{Weapons}{Weapon1}{\setkeys[DndBase]{Weapon1}{
-	Name={},AtkBonus={},Damage={},Type={},#1}}
-\define@key[DndBase]{Weapons}{Weapon2}{\setkeys[DndBase]{Weapon2}{
-	Name={},AtkBonus={},Damage={},Type={},#1}}
-\define@key[DndBase]{Weapons}{Weapon3}{\setkeys[DndBase]{Weapon3}{
-	Name={},AtkBonus={},Damage={},Type={},#1}}
+\define@key[DndBase]{Weapons}{Weapon1}{\setkeys[DndBase]{Weapon1}{#1}}
+\define@key[DndBase]{Weapons}{Weapon2}{\setkeys[DndBase]{Weapon2}{#1}}
+\define@key[DndBase]{Weapons}{Weapon3}{\setkeys[DndBase]{Weapon3}{#1}}
 \define@key[DndBase]{Weapons}{Notes}{\def\@DndBase@Weapons@Notes{#1}}
 
 \define@key[DndBase]{Money}{Copper}{\def\@DndBase@Money@Copper{#1}}
@@ -626,12 +623,14 @@
 			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-10.96) {\@DndBase@WeaponA@Name};
 		\fi
 		% First Weapon: Attack bonus
-		\ifdefined\@DndBase@WeaponA@Name
-			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-10.96) {\@DndBase@WeaponA@AtkBonus};
+		\ifdefined\@DndBase@WeaponA@AtkBonus
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-10.96) {\DndDisplaySignedNum{\@DndBase@WeaponA@AtkBonus}};
 		\fi
 		% First Weapon: damage / type
-		\ifdefined\@DndBase@WeaponA@Name
-			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-10.96) {\@DndBase@WeaponA@Damage/\@DndBase@WeaponA@Type};
+		\ifdefined\@DndBase@WeaponA@Damage
+			\ifdefined\@DndBase@WeaponA@Type
+				\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-10.96) {\@DndBase@WeaponA@Damage/\@DndBase@WeaponA@Type};
+			\fi
 		\fi
 		%
 		% Second Weapon: Name
@@ -639,12 +638,14 @@
 			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-11.65) {\@DndBase@WeaponB@Name};
 		\fi
 		% Second Weapon: Attack bonus
-		\ifdefined\@DndBase@WeaponB@Name
-			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-11.65) {\@DndBase@WeaponB@AtkBonus};
+		\ifdefined\@DndBase@WeaponB@AtkBonus
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-11.65) {\DndDisplaySignedNum{\@DndBase@WeaponB@AtkBonus}};
 		\fi
 		% Second Weapon: damage / type
-		\ifdefined\@DndBase@WeaponB@Name
-			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-11.65) {\@DndBase@WeaponB@Damage/\@DndBase@WeaponB@Type};
+		\ifdefined\@DndBase@WeaponB@Damage
+			\ifdefined\@DndBase@WeaponB@Type
+				\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-11.65) {\@DndBase@WeaponB@Damage/\@DndBase@WeaponB@Type};
+			\fi
 		\fi
 		%
 		% Third Weapon: Name
@@ -652,12 +653,14 @@
 			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (4.45,-12.37) {\@DndBase@WeaponC@Name};
 		\fi
 		% Third Weapon: Attack bonus
-		\ifdefined\@DndBase@WeaponC@Name
-			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-12.37) {\@DndBase@WeaponC@AtkBonus};
+		\ifdefined\@DndBase@WeaponC@AtkBonus
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (6.25,-12.37) {\DndDisplaySignedNum{\@DndBase@WeaponC@AtkBonus}};
 		\fi
 		% Third Weapon: damage / type
-		\ifdefined\@DndBase@WeaponC@Name
-			\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-12.37) {\@DndBase@WeaponC@Damage/\@DndBase@WeaponC@Type};
+		\ifdefined\@DndBase@WeaponC@Damage
+			\ifdefined\@DndBase@WeaponC@Type
+				\node[draw=none,rectangle,text width=2.0 cm,align=left]   at (8.00,-12.37) {\@DndBase@WeaponC@Damage/\@DndBase@WeaponC@Type};
+			\fi
 		\fi
 		%
 		% Weapon notes (Sperate lines with '\\')
