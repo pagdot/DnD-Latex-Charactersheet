@@ -19,14 +19,14 @@
 \define@key[DndBase]{Base}{Abilities}{\setkeys[DndBase]{Abilities}{#1}}
 \define@key[DndBase]{Base}{Inspiration}{\def\@DndBase@Base@Inspiration{#1}}
 \define@key[DndBase]{Base}{Proficiencies}{\setkeys[DndBase]{Proficiencies}{
-	Strength=false,Dexterity=false,Constitution=false,
-	Intelligence=false,Wisdom=false,Charisma=false,#1}}
+	Strength=0,Dexterity=0,Constitution=0,
+	Intelligence=0,Wisdom=0,Charisma=0,#1}}
 \define@key[DndBase]{Base}{Skills}{\setkeys[DndBase]{Skills}{
-	Acrobatics=false,Animals=false,Arcana=false,Athletics=false,
-	Deception=false,History=false,Insight=false,Intimidation=false,
-	Investigation=false,Medicine=false,Nature=false,Perception=false,
-	Performance=false,Persuasion=false,Religion=false,
-	SleightOfHand=false,Stealth=false,Survival=false,#1}}
+	Acrobatics=0,Animals=0,Arcana=0,Athletics=0,
+	Deception=0,History=0,Insight=0,Intimidation=0,
+	Investigation=0,Medicine=0,Nature=0,Perception=0,
+	Performance=0,Persuasion=0,Religion=0,
+	SleightOfHand=0,Stealth=0,Survival=0,#1}}
 \define@key[DndBase]{Base}{Perception}{\def\@DndBase@Base@Perception{#1}}
 \define@key[DndBase]{Base}{OtherProficiencies}{\def\@DndBase@Base@OtherProficiencies{#1}}
 \define@key[DndBase]{Base}{Armor}{\def\@DndBase@Base@Armor{#1}}
@@ -60,31 +60,31 @@
 \define@key[DndBase]{Abilities}{Charisma}{\def\@DndBase@Abilities@Charisma{#1}}
 
 \define@key[DndBase]{Proficiencies}{Bonus}{\def\@DndBase@Proficiencies@Bonus{#1}}
-\define@key[DndBase]{Proficiencies}{Strength}[true]{\def\@DndBase@Proficiencies@Strength{#1}}
-\define@key[DndBase]{Proficiencies}{Dexterity}[true]{\def\@DndBase@Proficiencies@Dexterity{#1}}
-\define@key[DndBase]{Proficiencies}{Constitution}[true]{\def\@DndBase@Proficiencies@Constitution{#1}}
-\define@key[DndBase]{Proficiencies}{Intelligence}[true]{\def\@DndBase@Proficiencies@Intelligence{#1}}
-\define@key[DndBase]{Proficiencies}{Wisdom}[true]{\def\@DndBase@Proficiencies@Wisdom{#1}}
-\define@key[DndBase]{Proficiencies}{Charisma}[true]{\def\@DndBase@Proficiencies@Charisma{#1}}
+\define@key[DndBase]{Proficiencies}{Strength}[1]{\def\@DndBase@Proficiencies@Strength{#1}}
+\define@key[DndBase]{Proficiencies}{Dexterity}[1]{\def\@DndBase@Proficiencies@Dexterity{#1}}
+\define@key[DndBase]{Proficiencies}{Constitution}[1]{\def\@DndBase@Proficiencies@Constitution{#1}}
+\define@key[DndBase]{Proficiencies}{Intelligence}[1]{\def\@DndBase@Proficiencies@Intelligence{#1}}
+\define@key[DndBase]{Proficiencies}{Wisdom}[1]{\def\@DndBase@Proficiencies@Wisdom{#1}}
+\define@key[DndBase]{Proficiencies}{Charisma}[1]{\def\@DndBase@Proficiencies@Charisma{#1}}
 
-\define@key[DndBase]{Skills}{Acrobatics}[true]{\def\@DndBase@Skills@Acrobatics{#1}}
-\define@key[DndBase]{Skills}{Animals}[true]{\def\@DndBase@Skills@Animals{#1}}
-\define@key[DndBase]{Skills}{Arcana}[true]{\def\@DndBase@Skills@Arcana{#1}}
-\define@key[DndBase]{Skills}{Athletics}[true]{\def\@DndBase@Skills@Athletics{#1}}
-\define@key[DndBase]{Skills}{Deception}[true]{\def\@DndBase@Skills@Deception{#1}}
-\define@key[DndBase]{Skills}{History}[true]{\def\@DndBase@Skills@History{#1}}
-\define@key[DndBase]{Skills}{Insight}[true]{\def\@DndBase@Skills@Insight{#1}}
-\define@key[DndBase]{Skills}{Intimidation}[true]{\def\@DndBase@Skills@Intimidation{#1}}
-\define@key[DndBase]{Skills}{Investigation}[true]{\def\@DndBase@Skills@Investigation{#1}}
-\define@key[DndBase]{Skills}{Medicine}[true]{\def\@DndBase@Skills@Medicine{#1}}
-\define@key[DndBase]{Skills}{Nature}[true]{\def\@DndBase@Skills@Nature{#1}}
-\define@key[DndBase]{Skills}{Perception}[true]{\def\@DndBase@Skills@Perception{#1}}
-\define@key[DndBase]{Skills}{Performance}[true]{\def\@DndBase@Skills@Performance{#1}}
-\define@key[DndBase]{Skills}{Persuasion}[true]{\def\@DndBase@Skills@Persuasion{#1}}
-\define@key[DndBase]{Skills}{Religion}[true]{\def\@DndBase@Skills@Religion{#1}}
-\define@key[DndBase]{Skills}{SleightOfHand}[true]{\def\@DndBase@Skills@SleightOfHand{#1}}
-\define@key[DndBase]{Skills}{Stealth}[true]{\def\@DndBase@Skills@Stealth{#1}}
-\define@key[DndBase]{Skills}{Survival}[true]{\def\@DndBase@Skills@Survival{#1}}
+\define@key[DndBase]{Skills}{Acrobatics}[1]{\def\@DndBase@Skills@Acrobatics{#1}}
+\define@key[DndBase]{Skills}{Animals}[1]{\def\@DndBase@Skills@Animals{#1}}
+\define@key[DndBase]{Skills}{Arcana}[1]{\def\@DndBase@Skills@Arcana{#1}}
+\define@key[DndBase]{Skills}{Athletics}[1]{\def\@DndBase@Skills@Athletics{#1}}
+\define@key[DndBase]{Skills}{Deception}[1]{\def\@DndBase@Skills@Deception{#1}}
+\define@key[DndBase]{Skills}{History}[1]{\def\@DndBase@Skills@History{#1}}
+\define@key[DndBase]{Skills}{Insight}[1]{\def\@DndBase@Skills@Insight{#1}}
+\define@key[DndBase]{Skills}{Intimidation}[1]{\def\@DndBase@Skills@Intimidation{#1}}
+\define@key[DndBase]{Skills}{Investigation}[1]{\def\@DndBase@Skills@Investigation{#1}}
+\define@key[DndBase]{Skills}{Medicine}[1]{\def\@DndBase@Skills@Medicine{#1}}
+\define@key[DndBase]{Skills}{Nature}[1]{\def\@DndBase@Skills@Nature{#1}}
+\define@key[DndBase]{Skills}{Perception}[1]{\def\@DndBase@Skills@Perception{#1}}
+\define@key[DndBase]{Skills}{Performance}[1]{\def\@DndBase@Skills@Performance{#1}}
+\define@key[DndBase]{Skills}{Persuasion}[1]{\def\@DndBase@Skills@Persuasion{#1}}
+\define@key[DndBase]{Skills}{Religion}[1]{\def\@DndBase@Skills@Religion{#1}}
+\define@key[DndBase]{Skills}{SleightOfHand}[1]{\def\@DndBase@Skills@SleightOfHand{#1}}
+\define@key[DndBase]{Skills}{Stealth}[1]{\def\@DndBase@Skills@Stealth{#1}}
+\define@key[DndBase]{Skills}{Survival}[1]{\def\@DndBase@Skills@Survival{#1}}
 
 \define@key[DndBase]{Hitpoints}{Maximum}{\def\@DndBase@Hitpoints@Maximum{#1}}
 \define@key[DndBase]{Hitpoints}{Current}{\def\@DndBase@Hitpoints@Current{#1}}
@@ -133,9 +133,7 @@
 }
 
 \NewExpandableDocumentCommand\DndGetSavingThrow{m m}{
-	\str_if_eq:NNTF {#2} {true}
-	{\fp_eval:n{#1 + \@DndBase@Proficiencies@Bonus}}
-	{#1}
+	\fp_eval:n{#1 + #2 * \@DndBase@Proficiencies@Bonus}
 }
 \ExplSyntaxOff
 
@@ -278,29 +276,29 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Strength
-		\ifthenelse{\boolean\@DndBase@Proficiencies@Strength}{
-			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-4.45) {};
-		}{}
+		\ifnum \@DndBase@Proficiencies@Strength > 0
+			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-4.45) {\@DndBase@Proficiencies@Strength};
+		\fi
 		% Dexterity
-		\ifthenelse{\boolean\@DndBase@Proficiencies@Dexterity}{
+		\ifnum \@DndBase@Proficiencies@Dexterity > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-4.91) {};
-		}{}
+		\fi
 		% Constitution
-		\ifthenelse{\boolean\@DndBase@Proficiencies@Constitution}{
+		\ifnum \@DndBase@Proficiencies@Constitution > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-5.37) {};
-		}{}
+		\fi
 		% Intelligence
-		\ifthenelse{\boolean\@DndBase@Proficiencies@Intelligence}{
+		\ifnum \@DndBase@Proficiencies@Intelligence > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-5.84) {};
-		}{}
+		\fi
 		% Wisdom
-		\ifthenelse{\boolean\@DndBase@Proficiencies@Wisdom}{
+		\ifnum \@DndBase@Proficiencies@Wisdom > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-6.30) {};
-		}{}
+		\fi
 		% Charisma
-		\ifthenelse{\boolean\@DndBase@Proficiencies@Charisma}{
+		\ifnum \@DndBase@Proficiencies@Charisma > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-6.76) {};
-		}{}
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -349,77 +347,77 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
 		% Acrobatics
-		\ifthenelse{\boolean\@DndBase@Skills@Acrobatics}{
+		\ifnum \@DndBase@Skills@Acrobatics > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,- 8.40) {};
-		}{}
+		\fi
 		% Animal handling
-		\ifthenelse{\boolean\@DndBase@Skills@Animals}{
+		\ifnum \@DndBase@Skills@Animals > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,- 8.86) {};
-		}{}
+		\fi
 		% Arcana
-		\ifthenelse{\boolean\@DndBase@Skills@Arcana}{
+		\ifnum \@DndBase@Skills@Arcana > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,- 9.33) {};
-		}{}
+		\fi
 		% Athletics
-		\ifthenelse{\boolean\@DndBase@Skills@Athletics}{
+		\ifnum \@DndBase@Skills@Athletics > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,- 9.79) {};
-		}{}
+		\fi
 		% Deception
-		\ifthenelse{\boolean\@DndBase@Skills@Deception}{
+		\ifnum \@DndBase@Skills@Deception > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-10.26) {};
-		}{}
+		\fi
 		% History
-		\ifthenelse{\boolean\@DndBase@Skills@History}{
+		\ifnum \@DndBase@Skills@History > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-10.72) {};
-		}{}
+		\fi
 		% Insight
-		\ifthenelse{\boolean\@DndBase@Skills@Insight}{
+		\ifnum \@DndBase@Skills@Insight > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-11.18) {};
-		}{}
+		\fi
 		% Intimidation
-		\ifthenelse{\boolean\@DndBase@Skills@Intimidation}{
+		\ifnum \@DndBase@Skills@Intimidation > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-11.65) {};
-		}{}
+		\fi
 		% Investigation
-		\ifthenelse{\boolean\@DndBase@Skills@Investigation}{
+		\ifnum \@DndBase@Skills@Investigation > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-12.11) {};
-		}{}
+		\fi
 		% Medicine
-		\ifthenelse{\boolean\@DndBase@Skills@Medicine}{
+		\ifnum \@DndBase@Skills@Medicine > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-12.58) {};
-		}{}
+		\fi
 		% Nature
-		\ifthenelse{\boolean\@DndBase@Skills@Nature}{
+		\ifnum \@DndBase@Skills@Nature > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-13.04) {};
-		}{}
+		\fi
 		% Perception
-		\ifthenelse{\boolean\@DndBase@Skills@Perception}{
+		\ifnum \@DndBase@Skills@Perception > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-13.50) {};
-		}{}
+		\fi
 		% Performance
-		\ifthenelse{\boolean\@DndBase@Skills@Performance}{
+		\ifnum \@DndBase@Skills@Performance > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-13.96) {};
-		}{}
+		\fi
 		% Persuasion
-		\ifthenelse{\boolean\@DndBase@Skills@Persuasion}{
+		\ifnum \@DndBase@Skills@Persuasion > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-14.43) {};
-		}{}
+		\fi
 		% Religion
-		\ifthenelse{\boolean\@DndBase@Skills@Religion}{
+		\ifnum \@DndBase@Skills@Religion > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-14.89) {};
-		}{}
+		\fi
 		% Sleight of hand
-		\ifthenelse{\boolean\@DndBase@Skills@SleightOfHand}{
+		\ifnum \@DndBase@Skills@SleightOfHand > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-15.36) {};
-		}{}
+		\fi
 		% Stealth
-		\ifthenelse{\boolean\@DndBase@Skills@Stealth}{
+		\ifnum \@DndBase@Skills@Stealth > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-15.82) {};
-		}{}
+		\fi
 		% Survival
-		\ifthenelse{\boolean\@DndBase@Skills@Survival}{
+		\ifnum \@DndBase@Skills@Survival > 0
 			\node[circle,fill,inner sep=1.2pt,label=] at (-0.71,-16.28) {};
-		}{}
+		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
@@ -602,10 +600,10 @@
 			% Current hit dices (no need to edit, made only to mark on paper)
 			\pgfmathparse{floor(0.5*\@DndBase@Hitdices@Count)-1}
 			\ifnum \@DndBase@Hitdices@Count > 1
-			\foreach \i in {0,...,\pgfmathresult}{		
-				\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-8.7) {};
-				\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-9.1) {};
-			}
+				\foreach \i in {0,...,\pgfmathresult}{		
+					\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-8.7) {};
+					\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-9.1) {};
+				}
 			\fi
 			\ifodd \@DndBase@Hitdices@Count
 				\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75+0.4*(\@DndBase@Hitdices@Count-1)/4},-8.9) {};
