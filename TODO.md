@@ -1,6 +1,5 @@
 # TODO
 
-+ calculate perception
 + hitdice bubble limit, support multiple hitdices
 + custom hitdices
 + fix warnings

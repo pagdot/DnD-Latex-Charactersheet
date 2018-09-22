@@ -135,6 +135,13 @@
 \NewExpandableDocumentCommand\DndGetSavingThrow{m m}{
 	\fp_eval:n{#1 + #2 * \@DndBase@Proficiencies@Bonus}
 }
+
+
+\NewExpandableDocumentCommand\DndGetPassiveWisdom{}{
+	\fp_eval:n{10 + \DndGetAbilityModifier{\@DndBase@Abilities@Wisdom}}
+}
+
+
 \ExplSyntaxOff
 
 \newcommand\DndCharacterSheet[1]{
@@ -524,8 +531,8 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\ifdefined\@DndBase@Base@Perception
-			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.82,-17.77) {\@DndBase@Base@Perception};
+		\ifdefined\@DndBase@Abilities@Wisdom			
+			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.82,-17.77) {\DndGetPassiveWisdom{}};
 		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
