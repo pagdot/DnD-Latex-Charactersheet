@@ -90,11 +90,11 @@
 		\fi
 		% Spell Save DC
 		\ifdefined\@DndSpells@Base@SaveDC
-			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (10.05, 0.45) {\huge \DndDisplaySignedNum{\@DndSpells@Base@SaveDC}};
+			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (10.05, 0.45) {\huge \@DndSpells@Base@SaveDC};
 		\fi
 		% Spell Attack Bonus
 		\ifdefined\@DndSpells@Base@AtkBonus
-			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (13.55, 0.45) {\huge \@DndSpells@Base@AtkBonus};
+			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (13.55, 0.45) {\huge \DndDisplaySignedNum{\@DndSpells@Base@AtkBonus}};
 		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
