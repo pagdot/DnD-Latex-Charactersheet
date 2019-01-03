@@ -58,12 +58,12 @@
 
 
 \ExplSyntaxOn
-%\NewExpandableDocumentCommand\DndDisplaySignedNum{m}{
-%	\int_compare:nNnTF
-%	{ #1 } < { 0 }
-%	{ $   #1 $ }
-%	{ $ + #1 $ }
-%}
+\NewExpandableDocumentCommand\DndSpellsDisplaySignedNum{m}{
+	\int_compare:nNnTF
+	{ #1 } < { 0 }
+	{ $   #1 $ }
+	{ $ + #1 $ }
+}
 \ExplSyntaxOff
 
 \newcommand\DndSpellSheet[1]{
@@ -94,7 +94,7 @@
 		\fi
 		% Spell Attack Bonus
 		\ifdefined\@DndSpells@Base@AtkBonus
-			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (13.55, 0.45) {\huge \DndDisplaySignedNum{\@DndSpells@Base@AtkBonus}};
+			\node[draw=none,rectangle,text width=1.5 cm,align=center] at (13.55, 0.45) {\huge \DndSpellsDisplaySignedNum{\@DndSpells@Base@AtkBonus}};
 		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
