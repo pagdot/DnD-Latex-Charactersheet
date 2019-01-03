@@ -8,13 +8,10 @@
 \begin{document}
 	\pagenumbering{gobble}
 
-	\DndCharacterSheet{}
-
 	\DndCharacterSheet{
 		Character={
 			Name=Gamoreth, 
-			Class=Warlock Lvl. 7,
-			Background=Village,
+			Class=Warlock Lvl. 8,
 			Player=Paul, 
 			Race=Human, 
 			Alignment=Chaos neutral, 
@@ -25,23 +22,20 @@
 			Dexterity=12,
 			Constitution=14,
 			Intelligence=10,
-			Wisdom=12,
-			Charisma=16
+			Wisdom=10,
+			Charisma=18
 		},
-		Inspiration={5},
 		Proficiencies={
 			Bonus=3,
 			Wisdom,
-			Charisma,
-			Dexterity=2,
+			Charisma
 		},
 		Skills={
 			Arcana,
 			Deception,
 			History,
 			Intimidation,
-			Medicine,
-			Survival=2
+			Medicine
 		},
 		OtherProficiencies={
 			Light armor \\
@@ -49,20 +43,14 @@
 			\\
 			Common \\
 			Abyssal \\
-			Undercommon\\
-			\\
-			Consectetur tenetur rem consectetur eos consequatur adipisci occaecati. 
-			Officia adipisci repellat et. 
-			Facilis cum libero non. 
-			Ratione ea enim quos illum laboriosam.
-			Ut id eum sint soluta.
+			Undercommon
 		},
 		Armor=13,
 		Initiative=1,
 		Speed=30,
 		Hitpoints={
-			Maximum=(53) 14,
-			Current=9,
+			Maximum=(63) 38,
+			Current={},
 			Temporary={}
 		},
 		Hitdices={
@@ -81,37 +69,16 @@
 				Damage=d4+2,
 				Type=Piercing
 			},
-			Weapon3={
-				Name=Knife,
-				AtkBonus=2,
-				Damage=d4,
-				Type=Piercing
-			},
-			Notes={
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-				Voluptas suscipit unde facilis aut. 
-				Nesciunt ut voluptatem quod id. 
-				Provident sunt autem eius nulla impedit. 
-				Voluptatem doloremque voluptas et.
-				Sit corporis expedita facilis ab sequi minus rerum nam. 
-				Et a qui ab ipsum inventore repudiandae. 
-				Voluptatem nihil ut consectetur. 
-				Aperiam non est nulla dolor voluptatem voluptates dolores autem.
-				Atque natus omnis vitae consequatur reiciendis voluptatem deleniti. 
-			}
 		},
 		Money={
-			Copper=1337,
-			Silver=404,
-			Electrum=123,
-			Gold=1644,
-			Platin=256,
+			Gold=2864,
+			Platin=400
 		},
 		Equipment={
 			Necklace (arcane focus) \\
 			Knife \\
 			Waterskin \\
-			Studded leather armor \\
+			Leather armor $+1$ \\
 			Box with 2 bandages \\
 			Wand of Winter \\
 			2 Potions of healing \\
@@ -119,23 +86,8 @@
 			20 Demonic iron coins \\
 			2 Silver rings (100G each) \\
 			Simple blue garment \\
-			2 Potions of Restoration 
-		},
-		Traits={
-			Et ut exercitationem voluptatem. 
-			Et eligendi ut repellat consequatur tempora. 
-			Quia ut et consequatur accusantium.
-		},
-		Ideals={
-			Asperiores velit cum impedit minima inventore aspernatur. 
-			Aut tempore nam iste provident. 
-		},
-		Bonds={
-			Voluptatem nihil ut consectetur. 
-			Aperiam non est nulla dolor voluptatem voluptates dolores autem.
-		},
-		Flaws={
-			Atque natus omnis vitae consequatur reiciendis voluptatem deleniti.
+			2 Potions of Restoration \\
+			Potion of protection against frost (1h)
 		},
 		Features={
 			War Caster \\
@@ -146,45 +98,44 @@
 			\\
 			Pact of the Tome \\
 			Fiend Patron \\
-			Dark One's Blessing \\
-			\\
-			Consectetur tenetur rem consectetur eos consequatur adipisci occaecati. 
-			Officia adipisci repellat et. 
-			Facilis cum libero non. 
-			Ratione ea enim quos illum laboriosam.
-			Ut id eum sint soluta. 
-			Voluptatem et maxime harum. 
-			Aspernatur est officia qui est ipsam unde itaque. 
-			Aperiam sed maxime quasi. 
-			Officia debitis corrupti nesciunt deserunt praesentium.
-			Iusto nemo et voluptatibus voluptatem earum explicabo. 
-			Officia dolores dolorum voluptatum. 
-			Eum sunt id laboriosam nam enim. 
-			Atque natus omnis vitae consequatur reiciendis voluptatem deleniti. 
-			Assumenda et labore eveniet dolores. 
-			Veritatis facilis magni vitae corporis.
+			Dark One's Blessing
 		},
-		Notes={
-			Suspendisse feugiat vel purus et ultricies. 
-			Etiam nec nunc a tortor gravida hendrerit quis in libero. 
-			Quisque pharetra dolor id elit semper, 
-			et accumsan ante malesuada. 
-			Nullam vel urna eget ex accumsan mollis malesuada eget metus. 
-			Nunc viverra luctus ante, non hendrerit felis accumsan eget.
-			Sed sed tempus nulla. Sed accumsan tellus ac sapien eleifend, 
-			sit amet porttitor ipsum sagittis. 
-			Pellentesque rutrum urna et nisl aliquet vulputate. 
-			Aliquam porttitor libero leo.
-			Donec quis ante eu urna feugiat volutpat. 
-		}
+		Notes={ 
+			War Caster: 
+			\begin{itemize}% 
+				\item You have advantage on Constitution saving throws to maintain your concentration on a spell when you take damage. 
+				\item  You can perform the somatic components of spells even when you have equpied weapons or a shield. 
+				\item Cast a spell (1 action, target is creature) instead of a oppertunity attack 
+			\end{itemize} 
+			% 
+			Agonizing Blast: Eldritch Blast +CHA DMG Bonus \\% 
+			\\% 
+			Repelling Blast: Eldrith blast pushes the target up to 10 feet further away from you \\ 
+			\\ 
+			Devil’s Sight: You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet. \\ 
+			\\ 
+			Ghostly Gaze: Look through a solid object (up to 30 foot) once every short/long rest 
+			\\ 
+			Pact of the Tome: Book of Shadows (Spellbook) \\ 
+			\\ 
+			Fiend Patron: Expanded Spell list \\ 
+			Dark One's Blessing: CHA-Mod + Lvl temp. HP when reducing a hostile creature to 0 HP \\ 
+			\\ 
+			Dark One's Own Luck: add d10 to an ability check or saving throw once every short rest \\ 
+			\\ 
+			Bandages: restore d10 hp during short rest \\ 
+			Potion of Restoration: Restores d4 PermaHP / long Rest 
+			\\ 
+			Im Wirtshaus von Gob heiße ich Taron, Thentam bei den Kultisten \\ 
+			\\ 
+			Wand of Winter (7 uses, recharging): Ray of Frost (costs 1), Sleetstorm (costs 3), Icestorm (costs 4); Current Uses: 7 
+		} 
 	}
-
-	\DndSpellSheet{}
 
 	\DndSpellSheet {
 		Class=Warlock,
-		Ability=CHA,
-		SaveDC=14,
+		Ability=CHR,
+		SaveDC=15,
 		AtkBonus=6,
 		Cantrips={
 			Eldritch Blast \\
@@ -197,130 +148,31 @@
 			\-\hspace{1em} Mending
 		},
 		Level1={
-			Slots=1,
 			Spells={
-				Burning Hands\\
-				\\
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-				Nunc et urna vitae odio imperdiet porta.
-				Praesent facilisis urna sit amet leo imperdiet, 
-				nec varius nulla elementum. 
-				Quisque scelerisque nibh finibus tortor accumsan, 
-				eget ultrices turpis consequat. 
-				Suspendisse congue diam sed urna iaculis, 
-				quis scelerisque erat euismod. 
-				Orci varius natoque penatibus et magnis dis 
+				Burning Hands
 			}
 		},
 		Level2={
-			Slots=2,
 			Spells={
 				Invisibility \\
-				Spider Climb \\
-				\\
-				Aliquam erat volutpat. 
-				Etiam laoreet leo non neque pretium elementum. 
-				Sed sed interdum velit.
-				Praesent varius vehicula sem, et commodo lorem.
-				Donec at lectus sagittis nunc convallis placerat. 
-				Aenean venenatis, purus eu vulputate tincidunt, 
-				nunc dolor sollicitudin urna, 
-				eget fringilla quam dui a lectus. 
+				Spider Climb
 			}
 		},
 		Level3={
-			Slots=3,
 			Spells={
 				Fire Ball\\
 				Hunger of Hadar\\
-				Tongues \\
-				\\
-				Nam ultrices, mi vitae tincidunt laoreet, 
-				risus lacus tincidunt eros, 
-				sed lacinia massa dui sed massa. 
-				Cras blandit nisi quis velit mollis porta in sed nisl. 
-				Curabitur lectus massa, euismod sed nibh et, 
-				rhoncus consectetur sapien. 
-				Nulla iaculis libero eu rutrum venenatis. 
-				Integer sodales accumsan elit eu ultrices. 
+				Tongues
 			}
 		},
 		Level4={
-			Slots=4,
+			Slots=2,
 			Spells={
 				Wall of Fire\\
 				Dimension Door\\
-				\\
-				Quisque tincidunt dignissim odio, 
-				in sollicitudin nibh gravida finibus. 
-				Nulla urna orci, placerat quis quam a, 
-				posuere ultricies ligula. 
-				Quisque dignissim euismod ligula, 
-				eget hendrerit quam suscipit vel. 
-				Etiam sem purus, sagittis ut consequat a,
-				lacinia quis felis. 
-				Nullam rhoncus id nunc non facilisis. 
-				Cras elementum sed odio et ornare. 
+				Blight
 			}
 		},
-		Level5={
-			Slots=5,
-			Spells={
-				Curabitur faucibus lorem cursus malesuada suscipit. 
-				Vivamus egestas aliquet arcu, 
-				in euismod metus condimentum et. 
-				Praesent hendrerit lectus vitae mauris viverra elementum. 
-				Praesent vehicula sit amet purus id tincidunt. 
-				Donec vehicula sed ex at volutpat. 
-				Aenean pellentesque semper est ac congue. 
-			}
-		},
-		Level6={
-			Slots=6,
-			Spells={
-				Pellentesque tincidunt finibus nibh, 
-				ac sollicitudin sapien pharetra sed. 
-				Sed ut sapien ut purus varius tincidunt vitae dapibus lacus. 
-				Mauris et dolor ut enim commodo elementum ac at ex. 
-				Nullam dolor neque, eleifend eget placerat ac, 
-				hendrerit non nibh. 
-				Mauris tincidunt eu augue nec lacinia. 
-			}
-		},
-		Level7={
-			Slots=7,
-			Spells={
-				Mauris aliquet euismod nisl vel lobortis. 
-				Nullam vitae augue quis ligula rhoncus aliquet sit amet at tortor. 
-				Nam facilisis, libero non posuere tincidunt, 
-				ipsum neque auctor massa, nec lacinia metus magna a leo. 
-				Mauris id rutrum risus, a dictum felis. 
-				Aliquam eget posuere odio. 
-			}
-		},
-		Level8={
-			Slots=8,
-			Spells={
-				Vestibulum lorem nunc, vehicula quis volutpat convallis, 
-				cursus eu ligula. Proin quis posuere nulla. 
-				Nam non posuere tortor. 
-				Proin ac finibus libero. 
-				Nulla nunc diam, malesuada et magna ac, 
-				pulvinar varius nisl. 
-				Nulla facilisi. 
-			}
-		},
-		Level9={
-			Slots=0,
-			Spells={
-				eu efficitur justo iaculis eget. 
-				Fusce luctus dolor sem, nec aliquam leo tempus non. 
-				Aliquam consequat enim eu congue eleifend. 
-				Morbi in tincidunt dolor. 
-				Class aptent taciti sociosqu ad litora torquent 
-				per conubia nostra. 
-			}
-		}
 	}
 \end{document}
                                                             
