@@ -2,7 +2,9 @@
 \documentclass[10pt,a4paper]{scrbook}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{lipsum}
 \usepackage[base=base.pdf]{dndcharactersheet}
+\usepackage[base=details.pdf]{dnddetailssheet}
 \usepackage[base=spells.pdf]{dndspellsheet}
 
 \begin{document}
@@ -176,6 +178,53 @@
 			Pellentesque rutrum urna et nisl aliquet vulputate. 
 			Aliquam porttitor libero leo.
 			Donec quis ante eu urna feugiat volutpat. 
+		}
+	}
+
+	\DndDetailsSheet{
+		Character={
+			Age=40,
+			Height=1.7m,
+			Weight=80kg,
+			Eyes=Brown,
+			Skin=26,
+			Hair=Black
+		},
+		Appearance={
+			This is where you insert your appearance.\\
+			\lipsum[4]
+		},
+		Backstory={
+			This is where you insert your backstory.\\
+			\lipsum[1]
+		},
+		Allies={
+			Orga=Organization,
+			Left={
+				This is where your allies go. Test auto line break.\\
+				You can also put organisations you  belong to in here.\\
+				\lipsum[2]
+			},
+			Right={
+				Here you can put more allies.\\
+				Are you sure you have so many friends?
+			}
+		},
+		Traits={
+			Left={
+				\lipsum[3]
+			},
+			Right={
+				\lipsum[5]
+			}
+		},
+		Treasure={
+			Left={
+				\lipsum[4]
+			},
+			Right={
+				\lipsum[4]
+			}
 		}
 	}
 

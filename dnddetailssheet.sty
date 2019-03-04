@@ -1,0 +1,182 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dnddetailssheet}[2019/03/04 D&D Details Sheet]
+
+\RequirePackage{pdfpages}
+\RequirePackage{tikz}
+\RequirePackage{amsmath}
+\RequirePackage{array}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{setspace}
+\RequirePackage{xkeyval}
+\RequirePackage{ifthen}
+\RequirePackage{xparse}
+
+\DeclareOptionX{base}{\def\detailspdf{#1}}
+\ProcessOptionsX\relax
+
+\define@key[DndDetails]{Base}{Character}{\setkeys[DndDetails]{Character}{#1}}
+\define@key[DndDetails]{Character}{Age}{\def\@DndDetails@Character@Age{#1}}
+\define@key[DndDetails]{Character}{Height}{\def\@DndDetails@Character@Height{#1}}
+\define@key[DndDetails]{Character}{Weight}{\def\@DndDetails@Character@Weight{#1}}
+\define@key[DndDetails]{Character}{Eyes}{\def\@DndDetails@Character@Eyes{#1}}
+\define@key[DndDetails]{Character}{Skin}{\def\@DndDetails@Character@Skin{#1}}
+\define@key[DndDetails]{Character}{Hair}{\def\@DndDetails@Character@Hair{#1}}
+
+\define@key[DndDetails]{Base}{Appearance}{\def\@DndDetails@Base@Appearance{#1}}
+
+\define@key[DndDetails]{Base}{Backstory}{\def\@DndDetails@Base@Backstory{#1}}
+
+\define@key[DndDetails]{Base}{Allies}{\setkeys[DndDetails]{Allies}{#1}}
+\define@key[DndDetails]{Allies}{Orga}{\def\@DndDetails@Allies@Orga{#1}}
+\define@key[DndDetails]{Allies}{Left}{\def\@DndDetails@Allies@Left{#1}}
+\define@key[DndDetails]{Allies}{Right}{\def\@DndDetails@Allies@Right{#1}}
+
+\define@key[DndDetails]{Base}{Traits}{\setkeys[DndDetails]{Traits}{#1}}
+\define@key[DndDetails]{Traits}{Left}{\def\@DndDetails@Traits@Left{#1}}
+\define@key[DndDetails]{Traits}{Right}{\def\@DndDetails@Traits@Right{#1}}
+
+\define@key[DndDetails]{Base}{Treasure}{\setkeys[DndDetails]{Treasure}{#1}}
+\define@key[DndDetails]{Treasure}{Left}{\def\@DndDetails@Treasure@Left{#1}}
+\define@key[DndDetails]{Treasure}{Right}{\def\@DndDetails@Treasure@Right{#1}}
+
+\newcommand\DndDetailsSheet[1]{
+	\setkeys[DndDetails]{Base}{#1}
+
+	\includepdf[pages=1, pagecommand={\ifthispageodd{
+			\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
+		} {
+			\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(-1.31,0)}]
+		}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		%   Character Details
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% Character Name
+		\ifdefined\@DndBase@Character@Name
+			\node[draw=none,rectangle,text width=5.7 cm,align=center] at (0.3,0.3) {\huge \@DndBase@Character@Name};
+		\fi
+		% Age
+		\ifdefined\@DndDetails@Character@Age
+			\node[draw=none,rectangle,text width=3.5 cm] at (6.6, 0.7) {\@DndDetails@Character@Age};
+		\fi
+		% Height
+		\ifdefined\@DndDetails@Character@Height
+			\node[draw=none,rectangle,text width=3.0 cm] at (10.2, 0.7) {\@DndDetails@Character@Height};
+		\fi
+		% Weight
+		\ifdefined\@DndDetails@Character@Weight
+			\node[draw=none,rectangle,text width=3.0 cm] at (13.6, 0.7) {\@DndDetails@Character@Weight}; %(13.7, 0.8)
+		\fi
+		% Eyes
+		\ifdefined\@DndDetails@Character@Eyes
+			\node[draw=none,rectangle,text width=3.5 cm] at (6.6,-0.2) {\@DndDetails@Character@Eyes};
+		\fi
+		% Skin
+		\ifdefined\@DndDetails@Character@Skin
+			\node[draw=none,rectangle,text width=3.0 cm] at (10.2,-0.2) {\@DndDetails@Character@Skin};
+		\fi
+		% Hair
+		\ifdefined\@DndDetails@Character@Hair
+			\node[draw=none,rectangle,text width=3.0 cm] at (13.6,-0.2) {\@DndDetails@Character@Hair};
+		\fi
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		%   Character Appearance
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% TODO: add picture mode
+		% Text
+		\ifdefined\@DndDetails@Base@Appearance
+			\node[draw=none,rectangle,text width=5.7 cm,align=left] at (-0.3,-3.97) {%
+				\setstretch{0.975}\small
+				\parbox[][4.4 cm][t]{5.7 cm}{\@DndDetails@Base@Appearance}
+			};
+		\fi
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		%   Character Backstory
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		\ifdefined\@DndDetails@Base@Backstory
+			\node[draw=none,rectangle,text width=5.7 cm,align=left] at (-0.3,-12.64) {%
+				\setstretch{0.975}\small
+				\parbox[][4.4 cm][t]{5.7 cm}{\@DndDetails@Base@Backstory}
+			};
+		\fi
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		%   Allies & Organizations
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% Organization Name
+		\ifdefined\@DndDetails@Allies@Orga
+			\node[draw=none,rectangle,text width=3.5 cm] at (12,-2.83) {\@DndDetails@Allies@Orga};
+		\fi
+		% TODO: add symbol
+		% Left
+		\ifdefined\@DndDetails@Allies@Left
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.25,-3.72) {%
+				\setstretch{0.975}\small
+				\parbox[][3.9 cm][t]{5.9 cm}{\@DndDetails@Allies@Left}
+			};
+		\fi
+		% Right
+		\ifdefined\@DndDetails@Allies@Right
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (12.65,-9.75) {%
+				\setstretch{0.975}\small
+				\parbox[][3.9 cm][t]{5.9 cm}{\@DndDetails@Allies@Right}
+			};
+		\fi
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		%   Additional Features & Traits
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% Left
+		\ifdefined\@DndDetails@Traits@Left
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.25,-12.02) {%
+				\setstretch{0.975}\small
+				\parbox[][3.9 cm][t]{5.9 cm}{\@DndDetails@Traits@Left}
+			};
+		\fi
+		% Right
+		\ifdefined\@DndDetails@Traits@Right
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (12.65,-12.02) {%
+				\setstretch{0.975}\small
+				\parbox[][3.9 cm][t]{5.9 cm}{\@DndDetails@Traits@Right}
+			};
+		\fi
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		%   Treasure
+		%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%
+		% Left
+		\ifdefined\@DndDetails@Treasure@Left
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.25,-19.94) {%
+				\setstretch{0.975}\small
+				\parbox[][3.9 cm][t]{5.9 cm}{\@DndDetails@Treasure@Left}
+			};
+		\fi
+		% Right
+		\ifdefined\@DndDetails@Treasure@Right
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (12.65,-19.94) {%
+				\setstretch{0.975}\small
+				\parbox[][3.9 cm][t]{5.9 cm}{\@DndDetails@Treasure@Right}
+			};
+		\fi
+		%
+		\end{tikzpicture}}]{\detailspdf}
+}
