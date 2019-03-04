@@ -31,6 +31,7 @@
 \define@key[DndBase]{Base}{OtherProficiencies}{\def\@DndBase@Base@OtherProficiencies{#1}}
 \define@key[DndBase]{Base}{Armor}{\def\@DndBase@Base@Armor{#1}}
 \define@key[DndBase]{Base}{Initiative}{\def\@DndBase@Base@Initiative{#1}}
+\define@key[DndBase]{Base}{InitBonus}{\def\@DndBase@Base@InitBonus{#1}}
 \define@key[DndBase]{Base}{Speed}{\def\@DndBase@Base@Speed{#1}}
 \define@key[DndBase]{Base}{Hitpoints}{\setkeys[DndBase]{Hitpoints}{#1}}
 \define@key[DndBase]{Base}{Hitdices}{\setkeys[DndBase]{Hitdices}{#1}}
@@ -156,6 +157,10 @@
 
 \NewExpandableDocumentCommand\DndGetAbilityModifier{m}{
 	\fp_eval:n{trunc(#1 / 2 - 5, 0)}
+}
+
+\NewExpandableDocumentCommand\DndInitBonus{m}{
+	\fp_eval:n{#1 + \DndGetAbilityModifier{\@DndBase@Abilities@Dexterity}}
 }
 
 \NewExpandableDocumentCommand\DndDisplaySignedNum{m}{
@@ -587,7 +592,11 @@
 		% Initiative
 		\ifdefined\@DndBase@Base@Initiative
 			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (6.12,-2.64) {\Huge \DndDisplaySignedNum{\@DndBase@Base@Initiative}};
-		\fi
+		\else \ifdefined\@DndBase@Base@InitBonus
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (6.12,-2.64) {\Huge \DndDisplaySignedNum{\DndInitBonus{\@DndBase@Base@InitBonus}}};
+		\else
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (6.12,-2.64) {\Huge \DndDisplaySignedNum{\DndGetAbilityModifier{\@DndBase@Abilities@Dexterity}}};
+		\fi \fi
 		% Speed
 		\ifdefined\@DndBase@Base@Speed
 			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (8.15,-2.64) {\Huge \@DndBase@Base@Speed};
