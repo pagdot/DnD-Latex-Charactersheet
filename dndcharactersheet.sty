@@ -4,7 +4,7 @@
 \RequirePackage{pdfpages}
 \RequirePackage{tikz}
 \RequirePackage{amsmath}
-\RequirePackage{array}  
+\RequirePackage{array}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{setspace}
 \RequirePackage{xkeyval}
@@ -232,7 +232,7 @@
         % Dexterity
         \ifdefined\@DndBase@Abilities@Dexterity
 			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,- 5.41) {
-            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\@DndBase@Abilities@Dexterity}}};		
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\@DndBase@Abilities@Dexterity}}};
 		\fi
         % Constitution
         \ifdefined\@DndBase@Abilities@Constitution
@@ -247,7 +247,7 @@
         % Wisdom
         \ifdefined\@DndBase@Abilities@Wisdom
 			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (-2.34,-12.77) {
-            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\@DndBase@Abilities@Wisdom}}};		
+            	\huge \DndDisplaySignedNum{\DndGetAbilityModifier{\@DndBase@Abilities@Wisdom}}};
 		\fi
         % Charisma
         \ifdefined\@DndBase@Abilities@Charisma
@@ -531,7 +531,7 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\ifdefined\@DndBase@Abilities@Wisdom			
+		\ifdefined\@DndBase@Abilities@Wisdom		
 			\node[draw=none,rectangle,text width=0.4 cm,align=center] at (-2.82,-17.77) {\DndGetPassiveWisdom{}};
 		\fi
 		%
@@ -557,7 +557,7 @@
 		%
 		% Armor class
 		\ifdefined\@DndBase@Base@Armor
-			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (4.2,-2.4) {\huge \@DndBase@Base@Armor};	
+			\node[draw=none,rectangle,text width=0.8 cm,align=center] at (4.2,-2.4) {\huge \@DndBase@Base@Armor};
 		\fi
 		% Initiative
 		\ifdefined\@DndBase@Base@Initiative
@@ -565,7 +565,7 @@
 		\fi
 		% Speed
 		\ifdefined\@DndBase@Base@Speed
-			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (8.15,-2.64) {\Huge \@DndBase@Base@Speed};	
+			\node[draw=none,rectangle,text width=1.2 cm,align=center] at (8.15,-2.64) {\Huge \@DndBase@Base@Speed};
 		\fi
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -608,7 +608,7 @@
 			\ifnum \@DndBase@Hitdices@Count < 13
 				\pgfmathparse{floor(0.5*\@DndBase@Hitdices@Count)-1}
 				\ifnum \@DndBase@Hitdices@Count > 1
-					\foreach \i in {0,...,\pgfmathresult}{		
+					\foreach \i in {0,...,\pgfmathresult}{	
 						\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-8.7) {};
 						\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-9.1) {};
 					}
