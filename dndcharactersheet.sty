@@ -34,7 +34,7 @@
 \define@key[DndBase]{Base}{InitBonus}{\def\@DndBase@Base@InitBonus{#1}}
 \define@key[DndBase]{Base}{Speed}{\def\@DndBase@Base@Speed{#1}}
 \define@key[DndBase]{Base}{Hitpoints}{\setkeys[DndBase]{Hitpoints}{#1}}
-\define@key[DndBase]{Base}{Hitdices}{\setkeys[DndBase]{Hitdices}{#1}}
+\define@key[DndBase]{Base}{Hitdice}{\setkeys[DndBase]{Hitdice}{#1}}
 \define@key[DndBase]{Base}{Weapons}{\setkeys[DndBase]{Weapons}{#1}}
 \define@key[DndBase]{Base}{Money}{\setkeys[DndBase]{Money}{#1}}
 \define@key[DndBase]{Base}{Equipment}{\def\@DndBase@Base@Equipment{#1}}
@@ -90,8 +90,8 @@
 \define@key[DndBase]{Hitpoints}{Current}{\def\@DndBase@Hitpoints@Current{#1}}
 \define@key[DndBase]{Hitpoints}{Temporary}{\def\@DndBase@Hitpoints@Temporary{#1}}
 
-\define@key[DndBase]{Hitdices}{Count}{\def\@DndBase@Hitdices@Count{#1}}
-\define@key[DndBase]{Hitdices}{Desc}{\def\@DndBase@Hitdices@Desc{#1}}
+\define@key[DndBase]{Hitdice}{Count}{\def\@DndBase@Hitdice@Count{#1}}
+\define@key[DndBase]{Hitdice}{Desc}{\def\@DndBase@Hitdice@Desc{#1}}
 
 \define@key[DndBase]{Weapons}{Weapon1}{\setkeys[DndBase]{Weapon1}{#1}}
 \define@key[DndBase]{Weapons}{Weapon2}{\setkeys[DndBase]{Weapon2}{#1}}
@@ -629,26 +629,26 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		%   Hit dices
+		%   Hit dice
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		% Total hit dices
-		\ifdefined\@DndBase@Hitdices@Desc
-			\node[draw=none,rectangle,text width=1.6 cm,align=left] at (5.00,-8.28) {\@DndBase@Hitdices@Desc};
+		% Total hit dice
+		\ifdefined\@DndBase@Hitdice@Desc
+			\node[draw=none,rectangle,text width=1.6 cm,align=left] at (5.00,-8.28) {\@DndBase@Hitdice@Desc};
 		\fi
-		% Current hit dices (no need to edit, made only to mark on paper)
-		\ifdefined\@DndBase@Hitdices@Count
-			\ifnum \@DndBase@Hitdices@Count < 13
-				\pgfmathparse{floor(0.5*\@DndBase@Hitdices@Count)-1}
-				\ifnum \@DndBase@Hitdices@Count > 1
+		% Current hit dice (no need to edit, made only to mark on paper)
+		\ifdefined\@DndBase@Hitdice@Count
+			\ifnum \@DndBase@Hitdice@Count < 13
+				\pgfmathparse{floor(0.5*\@DndBase@Hitdice@Count)-1}
+				\ifnum \@DndBase@Hitdice@Count > 1
 					\foreach \i in {0,...,\pgfmathresult}{	
-						\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-8.7) {};
-						\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdices@Count-1)/2)/2 - \i)},-9.1) {};
+						\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdice@Count-1)/2)/2 - \i)},-8.7) {};
+						\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75-0.4*(floor((\@DndBase@Hitdice@Count-1)/2)/2 - \i)},-9.1) {};
 					}
 				\fi
-				\ifodd \@DndBase@Hitdices@Count
-					\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75+0.4*(\@DndBase@Hitdices@Count-1)/4},-8.9) {};
+				\ifodd \@DndBase@Hitdice@Count
+					\node[draw,circle,inner sep=3pt,label=,thick] at ({4.75+0.4*(\@DndBase@Hitdice@Count-1)/4},-8.9) {};
 				\fi
 			\fi
 		\fi
