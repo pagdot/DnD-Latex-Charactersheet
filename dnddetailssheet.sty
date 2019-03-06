@@ -28,6 +28,7 @@
 
 \define@key[DndDetails]{Base}{Allies}{\setkeys[DndDetails]{Allies}{#1}}
 \define@key[DndDetails]{Allies}{Orga}{\def\@DndDetails@Allies@Orga{#1}}
+\define@key[DndDetails]{Allies}{Symbol}{\def\@DndDetails@Allies@Symbol{#1}}
 \define@key[DndDetails]{Allies}{Left}{\def\@DndDetails@Allies@Left{#1}}
 \define@key[DndDetails]{Allies}{Right}{\def\@DndDetails@Allies@Right{#1}}
 
@@ -118,12 +119,15 @@
 		%
 		% Organization Name
 		\ifdefined\@DndDetails@Allies@Orga
-			\node[draw=none,rectangle,text width=3.5 cm] at (12,-2.83) {\@DndDetails@Allies@Orga};
+			\node[draw=none,rectangle,text width=3.5 cm] at (12,-2.83) {\centering\@DndDetails@Allies@Orga};
 		\fi
-		% TODO: add symbol
+		% Symbol
+		\ifdefined\@DndDetails@Allies@Symbol
+			\node[draw=none,rectangle,text width=3.5 cm] at (12,-4.9) {\includegraphics[height=3.5cm]{\@DndDetails@Allies@Symbol}};
+		\fi
 		% Left
 		\ifdefined\@DndDetails@Allies@Left
-			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.25,-3.72) {%
+			\node[draw=none,rectangle,text width=5.9 cm,align=left] at (6.25,-3.67) {%
 				\setstretch{0.975}\small
 				\parbox[][3.9 cm][t]{5.9 cm}{\@DndDetails@Allies@Left}
 			};
