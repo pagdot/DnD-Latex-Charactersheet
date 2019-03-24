@@ -11,6 +11,8 @@
 \RequirePackage{ifthen}
 \RequirePackage{xparse}
 
+\usepackage{dndcharactercommands}
+
 \DeclareOptionX{base}{\def\basepdf{#1}}
 \ProcessOptionsX\relax
 
@@ -121,56 +123,6 @@
 
 
 \ExplSyntaxOn
-
-%%% BEGIN OF OPEN GAME CONTENT
-% Latex Level and Proficiency Calculation
-% The following commands calculate the Character Level and Proficiency Bonus
-% based on the Experience Points.
-%
-% The data used in the commands are licensend under the OPEN GAME LICENSE v1.0a,
-% therefore the commands are also licensed under the OPEN GAME LICENSE v1.0a.
-% The license can be found in the "OpenGameLicense.md" or here:
-% http://www.opengamingfoundation.org/licenses.html
-% Original Experience and Proficiency Tables were extracted from the "Systems
-% Reference Document v5.1" by Wizards of the Coast, which can be found here:
-% http://dnd.wizards.com/articles/features/systems-reference-document-srd
-
-% calculates the Character Level based on the Experience Points
-\NewExpandableDocumentCommand\CharLevel{m}{
-	\int_compare:nTF {#1 < 300}		{1}
-	{\int_compare:nTF {#1 < 900}	{2}
-	{\int_compare:nTF {#1 < 2700}	{3}
-	{\int_compare:nTF {#1 < 6500}	{4}
-	{\int_compare:nTF {#1 < 14000}	{5}
-	{\int_compare:nTF {#1 < 23000}	{6}
-	{\int_compare:nTF {#1 < 34000}	{7}
-	{\int_compare:nTF {#1 < 48000}	{8}
-	{\int_compare:nTF {#1 < 64000}	{9}
-	{\int_compare:nTF {#1 < 85000}	{10}
-	{\int_compare:nTF {#1 < 100000}	{11}
-	{\int_compare:nTF {#1 < 120000}	{12}
-	{\int_compare:nTF {#1 < 140000}	{13}
-	{\int_compare:nTF {#1 < 165000}	{14}
-	{\int_compare:nTF {#1 < 195000}	{15}
-	{\int_compare:nTF {#1 < 225000}	{16}
-	{\int_compare:nTF {#1 < 265000}	{17}
-	{\int_compare:nTF {#1 < 305000}	{18}
-	{\int_compare:nTF {#1 < 355000}	{19}
-									{20}
-	}}}}}}}}}}}}}}}}}}
-}
-
-% calculates Proficiency Bonus based on the Character Level
-\NewExpandableDocumentCommand\CharProficiencyBonus{m}{
-	\int_compare:nTF {#1 < 5}	{2}
-	{\int_compare:nTF {#1 < 9}	{3}
-	{\int_compare:nTF {#1 < 13}	{4}
-	{\int_compare:nTF {#1 < 17}	{5}
-								{6}
-	}}}
-}
-
-%%% END OF OPEN GAME CONTENT
 
 \NewExpandableDocumentCommand\DndGetAbilityModifier{m}{
 	\fp_eval:n{trunc(#1 / 2 - 5, 0)}
