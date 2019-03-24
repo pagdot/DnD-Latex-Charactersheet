@@ -122,7 +122,21 @@
 
 \ExplSyntaxOn
 
-\NewExpandableDocumentCommand\DndLevel{m}{
+%%% BEGIN OF OPEN GAME CONTENT
+% Latex Level and Proficiency Calculation
+% The following commands calculate the Character Level and Proficiency Bonus
+% based on the Experience Points.
+%
+% The data used in the commands are licensend under the OPEN GAME LICENSE v1.0a,
+% therefore the commands are also licensed under the OPEN GAME LICENSE v1.0a.
+% The license can be found in the "OpenGameLicense.md" or here:
+% http://www.opengamingfoundation.org/licenses.html
+% Original Experience and Proficiency Tables were extracted from the "Systems
+% Reference Document v5.1" by Wizards of the Coast, which can be found here:
+% http://dnd.wizards.com/articles/features/systems-reference-document-srd
+
+% calculates the Character Level based on the Experience Points
+\NewExpandableDocumentCommand\CharLevel{m}{
 	\int_compare:nTF {#1 < 300}		{1}
 	{\int_compare:nTF {#1 < 900}	{2}
 	{\int_compare:nTF {#1 < 2700}	{3}
@@ -146,7 +160,8 @@
 	}}}}}}}}}}}}}}}}}}
 }
 
-\NewExpandableDocumentCommand\DndProficiencyBonus{m}{
+% calculates Proficiency Bonus based on the Character Level
+\NewExpandableDocumentCommand\CharProficiencyBonus{m}{
 	\int_compare:nTF {#1 < 5}	{2}
 	{\int_compare:nTF {#1 < 9}	{3}
 	{\int_compare:nTF {#1 < 13}	{4}
@@ -154,6 +169,8 @@
 								{6}
 	}}}
 }
+
+%%% END OF OPEN GAME CONTENT
 
 \NewExpandableDocumentCommand\DndGetAbilityModifier{m}{
 	\fp_eval:n{trunc(#1 / 2 - 5, 0)}
@@ -171,7 +188,7 @@
 }
 
 \NewExpandableDocumentCommand\DndGetSavingThrow{m m}{
-	\fp_eval:n{#1 + #2 * \DndProficiencyBonus{\DndLevel{\@DndBase@Character@Exp}}}
+	\fp_eval:n{#1 + #2 * \CharProficiencyBonus{\CharLevel{\@DndBase@Character@Exp}}}
 }
 
 \NewExpandableDocumentCommand\DndGetPassiveWisdom{}{
@@ -307,7 +324,7 @@
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
-		\node[draw=none,rectangle,text width=0.5 cm,align=center] at (-0.56,-3.27) {\DndDisplaySignedNum{\DndProficiencyBonus{\DndLevel{\@DndBase@Character@Exp}}}};
+		\node[draw=none,rectangle,text width=0.5 cm,align=center] at (-0.56,-3.27) {\DndDisplaySignedNum{\CharProficiencyBonus{\CharLevel{\@DndBase@Character@Exp}}}};
 		%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%
