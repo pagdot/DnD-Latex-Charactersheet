@@ -156,7 +156,7 @@
 }
 
 \NewExpandableDocumentCommand\DndGetAbilityModifier{m}{
-	\fp_eval:n{trunc(#1 / 2 - 5, 0)}
+	\fp_eval:n{trunc(#1 / 2, 0) - 5}
 }
 
 \NewExpandableDocumentCommand\DndInitBonus{m}{
