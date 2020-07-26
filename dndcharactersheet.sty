@@ -165,9 +165,14 @@
 
 \NewExpandableDocumentCommand\DndDisplaySignedNum{m}{
 	\int_compare:nNnTF
-	{ #1 } < { 0 }
-	{ $   #1 $ }
-	{ $ + #1 $ }
+	{ #1 } = { 0 }
+	{ $ + 0 $ }
+	{
+		\int_compare:nNnTF
+		{ #1 } < { 0 }
+		{ $   #1 $ }
+		{ $ + #1 $ }
+	}
 }
 
 \NewExpandableDocumentCommand\DndGetSavingThrow{m m}{
