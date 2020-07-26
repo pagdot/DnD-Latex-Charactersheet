@@ -69,7 +69,7 @@
 \newcommand\DndSpellSheet[1]{
 	\setkeys[DndSpells]{Base}{#1}
 
-	\includepdf[pages=1, pagecommand={\ifthispageodd{
+	\includepdf[pages=1, pagecommand={\Ifthispageodd{
 			\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
 		} {
 			\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(-1.31,0)}]
