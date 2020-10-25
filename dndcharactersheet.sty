@@ -188,7 +188,7 @@
 \newcommand\DndCharacterSheet[1]{
 	\setkeys[DndBase]{Base}{Skills={},Proficiencies={},#1}
 
-	\includepdf[pages=1, pagecommand={\Ifthispageodd{
+	\includepdf[pages=1, pagecommand={\ifthispageodd{
 		\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(1.31,0)}]
 	} {
 		\begin{tikzpicture}[remember picture, overlay,x=1cm,y=1cm,shift={(-1.31,0)}]
