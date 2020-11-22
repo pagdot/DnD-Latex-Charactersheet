@@ -180,7 +180,7 @@
 }
 
 \NewExpandableDocumentCommand\DndGetPassiveWisdom{}{
-	\fp_eval:n{10 + \DndGetAbilityModifier{\@DndBase@Abilities@Wisdom}}
+	\fp_eval:n{10 + \DndGetSavingThrow{\DndGetAbilityModifier{\@DndBase@Abilities@Wisdom}}{\@DndBase@Skills@Perception}}
 }
 
 \ExplSyntaxOff
